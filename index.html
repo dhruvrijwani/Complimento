@@ -267,76 +267,120 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Platform Performance (Right) -->
-            <div class="lg:col-span-5 space-y-6">
-                <div class="flex items-center gap-4 mb-2 animate-on-scroll">
-                    <h2 class="text-2xl font-serif text-white">Platforms</h2>
-                    <div class="h-[1px] flex-1 bg-brand-border"></div>
+                <!-- Platform Performance Detailed -->
+        <section class="mb-24 animate-on-scroll">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-serif text-white">Platform Performance & Insights</h2>
+                <div class="h-[1px] flex-1 bg-brand-border"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Meta Ads (Larger) -->
+                <div class="lg:col-span-2 glass-card p-8 rounded-2xl relative overflow-hidden group">
+                     <div class="absolute right-[-10%] top-[-10%] w-60 h-60 bg-blue-500/10 blur-[60px] rounded-full group-hover:bg-blue-500/20 transition-all duration-500"></div>
+                     
+                     <!-- Meta Header & Stats -->
+                     <div class="flex flex-wrap items-center justify-between gap-6 mb-8 relative z-10 border-b border-white/10 pb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-blue-600 rounded-lg shadow-lg shadow-blue-900/20">
+                                <i data-lucide="layers" class="text-white w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Meta Ads</h3>
+                                <p class="text-xs text-blue-300 uppercase tracking-widest">Primary Channel</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8">
+                             <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Spend</div>
+                                <div class="text-xl font-serif font-bold">₹3,29,792</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">ROAS</div>
+                                <div class="text-xl font-serif font-bold text-green-400">2.12</div>
+                            </div>
+                             <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Orders</div>
+                                <div class="text-xl font-serif font-bold">132</div>
+                            </div>
+                        </div>
+                     </div>
+
+                     <!-- Meta Insights -->
+                     <div class="relative z-10">
+                         <h4 class="text-lg font-serif text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-yellow-500"></i>
+                            Key Insights & Recommendations
+                         </h4>
+                         <ul class="space-y-4">
+                             <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                 <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                                 <span>
+                                     <strong class="text-white">Winning Products:</strong> Identified Ruhi 7-Layer Necklace (20.6% sales) and Sehr Choker Gold Brass Necklace (13.05% sales) as new winners.
+                                 </span>
+                             </li>
+                             <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                 <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                                 <span>
+                                     <strong class="text-white">Audience Performance:</strong> New LAL audience achieved 2.58 ROAS with 23 orders. Broad women targeting performed very well with 66 orders at 2.36 ROAS.
+                                 </span>
+                             </li>
+                             <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                 <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                                 <span>
+                                     <strong class="text-white">Risk Management:</strong> Implemented partial COD for high-risk orders and blocked regions like UP, Bihar, and Jharkhand to minimize fake orders.
+                                 </span>
+                             </li>
+                             <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                                 <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                                 <span>
+                                     <strong class="text-white">Operations:</strong> Returns & cancellations currently at 17%, impacting overall profitability.
+                                 </span>
+                             </li>
+                         </ul>
+                     </div>
                 </div>
 
-                <!-- Meta Ads -->
-                <div class="glass-card p-6 rounded-2xl relative overflow-hidden group animate-on-scroll">
-                    <!-- Glow Effect -->
-                    <div class="absolute right-[-20%] top-[-20%] w-40 h-40 bg-blue-500/20 blur-[50px] rounded-full group-hover:bg-blue-500/30 transition-all duration-500"></div>
+                <!-- Google Ads (Smaller) -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group flex flex-col">
+                    <div class="absolute right-[-10%] top-[-10%] w-40 h-40 bg-red-500/10 blur-[50px] rounded-full group-hover:bg-red-500/20 transition-all duration-500"></div>
                     
-                    <div class="flex items-center gap-3 mb-6 relative z-10">
-                        <div class="p-2 bg-blue-600 rounded-lg shadow-lg shadow-blue-900/20">
-                            <i data-lucide="layers" class="text-white w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Meta Ads</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-y-6 relative z-10">
-                        <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Spend</div>
-                            <div class="text-lg font-serif">₹3,29,792</div>
+                    <div class="flex items-center gap-3 mb-8 relative z-10 border-b border-white/10 pb-6">
+                        <div class="p-3 bg-red-600 rounded-lg shadow-lg shadow-red-900/20">
+                            <i data-lucide="target" class="text-white w-6 h-6"></i>
                         </div>
                         <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">ROAS</div>
-                            <div class="text-lg font-serif text-green-400">2.12</div>
-                        </div>
-                        <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Revenue</div>
-                            <div class="text-lg font-serif">₹7,00,799</div>
-                        </div>
-                        <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Orders</div>
-                            <div class="text-lg font-serif">132</div>
+                            <h3 class="text-2xl font-bold text-white">Google Ads</h3>
+                            <p class="text-xs text-red-300 uppercase tracking-widest">Brand Search</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Google Ads -->
-                <div class="glass-card p-6 rounded-2xl relative overflow-hidden group animate-on-scroll">
-                    <div class="absolute right-[-20%] top-[-20%] w-40 h-40 bg-red-500/10 blur-[50px] rounded-full group-hover:bg-red-500/20 transition-all duration-500"></div>
-                    
-                    <div class="flex items-center gap-3 mb-6 relative z-10">
-                        <div class="p-2 bg-red-600 rounded-lg shadow-lg shadow-red-900/20">
-                            <i data-lucide="target" class="text-white w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Google Ads</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-y-6 relative z-10">
+                    <div class="grid grid-cols-2 gap-6 mb-8 relative z-10">
                         <div>
                             <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Spend</div>
-                            <div class="text-lg font-serif">₹7,552</div>
+                            <div class="text-xl font-serif font-bold">₹7,752</div>
                         </div>
                         <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">ROAS</div>
-                            <div class="text-lg font-serif text-red-400">0.23</div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Impressions</div>
+                            <div class="text-xl font-serif font-bold">7,365</div>
                         </div>
                         <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Revenue</div>
-                            <div class="text-lg font-serif">₹1,750</div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Conversion</div>
+                            <div class="text-xl font-serif font-bold">₹1,750</div>
                         </div>
-                        <div>
-                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Orders</div>
-                            <div class="text-lg font-serif">1</div>
-                        </div>
+                    </div>
+
+                    <div class="relative z-10 mt-auto">
+                        <h4 class="text-sm font-serif text-white mb-3">Key Insight</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Currently running only search campaigns to ensure the brand appears at the top when users search directly for "Zevar". Low conversion volume as focus is purely on brand protection.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Top Performing Creatives Section -->
         <section class="mb-24 animate-on-scroll">
@@ -624,35 +668,111 @@
             </div>
         </section>
 
-        <!-- Brand Activities -->
-        <section class="mb-20">
-            <h2 class="text-2xl font-serif text-white mb-8 animate-on-scroll">Brand Activities</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-glass transition-colors animate-on-scroll">
-                    <div class="w-12 h-12 mx-auto bg-white/5 rounded-full flex items-center justify-center text-slate-300 mb-4 border border-white/10">
-                        <i data-lucide="eye"></i>
+        <!-- Brand Building Activities -->
+        <section class="mb-24 animate-on-scroll">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-serif text-white">Brand Building Activities</h2>
+                <div class="h-[1px] flex-1 bg-brand-border"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Activity 1: Awareness -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full hover:border-yellow-500/30 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-xl font-bold text-white group-hover:text-yellow-200 transition-colors">Awareness Campaign</h4>
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-yellow-400">
+                            <i data-lucide="megaphone" class="w-5 h-5"></i>
+                        </div>
                     </div>
-                    <h4 class="font-bold text-white mb-2">Awareness Ads</h4>
-                    <div class="text-2xl font-serif mb-1">3.5L+</div>
-                    <div class="text-[10px] text-slate-500 uppercase tracking-widest">New Reach</div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Ad Spent</div>
+                            <div class="text-xl font-serif font-bold text-white">₹8,900</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Reach</div>
+                            <div class="text-xl font-serif font-bold text-blue-200">3,52,630 <span class="text-sm font-sans font-normal text-slate-400">new people</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-6 border-t border-white/10">
+                        <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> Targeting refined using stacked interests to minimize junk traffic.</li>
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> Strengthened algorithm by providing data on responsive audience segments.</li>
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> Drove visitors who showed genuine interest and engaged positively.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-glass transition-colors animate-on-scroll" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 mx-auto bg-white/5 rounded-full flex items-center justify-center text-slate-300 mb-4 border border-white/10">
-                        <i data-lucide="bar-chart-3"></i>
+                <!-- Activity 2: Social Boosting -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full hover:border-pink-500/30 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-xl font-bold text-white group-hover:text-pink-200 transition-colors">Social Media Boosting</h4>
+                        <div class="p-2 rounded-lg bg-pink-500/10 text-pink-400">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </div>
                     </div>
-                    <h4 class="font-bold text-white mb-2">Social Boosting</h4>
-                    <div class="text-2xl font-serif mb-1">1.6L+</div>
-                    <div class="text-[10px] text-slate-500 uppercase tracking-widest">Total Views</div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Ad Spent</div>
+                                <div class="text-xl font-serif font-bold text-white">₹3,600</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Views</div>
+                                <div class="text-xl font-serif font-bold text-white">1,67,581</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Reach</div>
+                            <div class="text-xl font-serif font-bold text-blue-200">1,34,849 <span class="text-sm font-sans font-normal text-slate-400">new users</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-6 border-t border-white/10">
+                        <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+                            <li class="flex gap-2"><span class="text-pink-500">•</span> Promoted Reels with high-jewelry interests to enhance brand visibility and trust.</li>
+                            <li class="flex gap-2"><span class="text-pink-500">•</span> Appeared across feeds of new users to build credibility.</li>
+                            <li class="flex gap-2"><span class="text-pink-500">•</span> Strategic targeting ensured visibility among relevant audience segments only.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-glass transition-colors animate-on-scroll" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 mx-auto bg-white/5 rounded-full flex items-center justify-center text-slate-300 mb-4 border border-white/10">
-                        <i data-lucide="video"></i>
+                <!-- Activity 3: Live Campaign -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full hover:border-purple-500/30 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-xl font-bold text-white group-hover:text-purple-200 transition-colors">Instagram Live</h4>
+                        <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400">
+                            <i data-lucide="video" class="w-5 h-5"></i>
+                        </div>
                     </div>
-                    <h4 class="font-bold text-white mb-2">Live Campaign</h4>
-                    <div class="text-2xl font-serif mb-1">₹5.5k</div>
-                    <div class="text-[10px] text-slate-500 uppercase tracking-widest">Revenue</div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Ad Spent</div>
+                                <div class="text-xl font-serif font-bold text-white">₹8,400</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Revenue</div>
+                                <div class="text-xl font-serif font-bold text-white">₹5,503</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Conversions</div>
+                            <div class="text-xl font-serif font-bold text-blue-200">1 Order</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-6 border-t border-white/10">
+                        <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+                            <li class="flex gap-2"><span class="text-purple-500">•</span> Featured wedding best sellers (Sehr & Kundan).</li>
+                            <li class="flex gap-2"><span class="text-purple-500">•</span> Campaigns ran from Live session until following Sunday.</li>
+                            <li class="flex gap-2"><span class="text-purple-500">•</span> Offered special 15% discount to drive urgency.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
