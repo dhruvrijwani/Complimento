@@ -1,750 +1,1128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complimento - December 2025 Monthly Report</title>
+    <title> Complimento - Monthly Performance Report</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            base: 'rgba(31, 51, 69, 1)',
+                            dark: '#050505',
+                            accent: 'rgba(31, 51, 69, 0.4)',
+                            glass: 'rgba(31, 51, 69, 0.15)',
+                            border: 'rgba(255, 255, 255, 0.1)',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #000;
-            color: #fff;
-            padding: 20px;
-            line-height: 1.6;
+            background-color: #020202;
+            color: #e2e8f0;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        /* Glassmorphism Utilities */
+        .glass-card {
+            background: rgba(31, 51, 69, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 40px 20px;
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(31, 51, 69, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        h1 {
-            font-size: 56px;
-            font-weight: 400;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-        }
-
-        .date {
-            color: #888;
-            font-size: 16px;
-        }
-
-        .section-title {
-            font-size: 28px;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .metric-card {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .metric-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #10b981, #059669);
-        }
-
-        .metric-label {
-            font-size: 12px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .metric-value {
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .metric-subtitle {
-            font-size: 13px;
-            color: #666;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 500;
-            margin-left: 10px;
-        }
-
-        .status-exceeded {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-        }
-
-        .status-near {
-            background: rgba(234, 179, 8, 0.2);
-            color: #eab308;
-        }
-
-        .status-success {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-        }
-
-        .summary-box {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.6), rgba(20, 20, 20, 0.8));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 50px;
-            line-height: 1.8;
-        }
-
-        .summary-box p {
-            margin-bottom: 15px;
-            color: #ccc;
-        }
-
-        .products-section {
-            margin-bottom: 50px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.5);
-        }
-
-        .product-name {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: #10b981;
-        }
-
-        .platform-section {
-            margin-bottom: 50px;
-        }
-
-        .platform-card {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 30px;
-        }
-
-        .platform-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .platform-name {
-            font-size: 32px;
-            font-weight: 600;
-        }
-
-        .platform-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .stat-item {
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .insights-section {
-            margin-top: 30px;
-        }
-
-        .insights-title {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #10b981;
-        }
-
-        .insights-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .insights-list li {
-            padding: 10px 0;
-            padding-left: 25px;
-            position: relative;
-            color: #ccc;
-        }
-
-        .insights-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #10b981;
-        }
-
-        .comparison-section {
-            margin-bottom: 50px;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .comparison-item {
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .comparison-metric {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 10px;
-        }
-
-        .comparison-values {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-        }
-
-        .projected {
-            color: #666;
-            font-size: 18px;
-        }
-
-        .actual {
-            color: #10b981;
-            font-size: 28px;
-            font-weight: 600;
-        }
-
-        .achievement {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .two-column {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .info-box {
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 30px;
-        }
-
-        .info-box h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #10b981;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .icon-success {
-            color: #10b981;
-        }
-
-        .icon-warning {
-            color: #ef4444;
-        }
-
-        .strategy-section {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 50px;
-        }
-
-        .strategy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .strategy-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .strategy-item h4 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: #10b981;
-        }
-
-        .target-box {
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 1));
-            border: 2px solid #10b981;
-            border-radius: 16px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .target-box h3 {
-            font-size: 28px;
-            margin-bottom: 30px;
-            color: #10b981;
-        }
-
-        .target-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 25px;
-        }
-
-        .target-stat {
-            padding: 20px;
-        }
-
-        .target-stat-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-        }
-
-        .target-stat-value {
-            font-size: 32px;
-            font-weight: 600;
-            color: #10b981;
-        }
-
-        .boosting-section {
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .platform-name {
-                font-size: 24px;
-            }
-
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-
-            .strategy-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            .metric-value {
-                font-size: 28px;
-            }
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020202; }
+        ::-webkit-scrollbar-thumb { background: rgba(31, 51, 69, 1); border-radius: 4px; }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1"
+  }
+}
+</script>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="badge">MONTHLY REPORT</div>
-            <h1>Complimento</h1>
-            <div class="date">📅 December 2025</div>
-        </div>
+<body class="antialiased selection:bg-[rgba(31,51,69,1)] selection:text-white">
 
-        <h2 class="section-title">Executive Summary</h2>
-        
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-label">💰 Total Spend</div>
-                <div class="metric-value">₹3,81,601</div>
-                <div class="metric-subtitle">102% of projected budget <span class="status-badge status-exceeded">EXCEEDED</span></div>
-            </div>
-            
-            <div class="metric-card">
-                <div class="metric-label">🛍️ Shopify Orders</div>
-                <div class="metric-value">142</div>
-                <div class="metric-subtitle">110% of target <span class="status-badge status-near">NEAR TARGET</span></div>
-            </div>
-            
-            <div class="metric-card">
-                <div class="metric-label">📈 Revenue</div>
-                <div class="metric-value">₹5,90,402</div>
-                <div class="metric-subtitle">79% of target <span class="status-badge status-near">NEAR TARGET</span></div>
-            </div>
-            
-            <div class="metric-card">
-                <div class="metric-label">📊 ROAS</div>
-                <div class="metric-value">1.55</div>
-                <div class="metric-subtitle">77.5% of target <span class="status-badge status-near">NEAR TARGET</span></div>
-            </div>
-        </div>
-
-        <div class="summary-box">
-            <p>In December, we had estimated a spend of ₹373K. To ensure better ROI, we optimized for ROAS and ultimately spent ₹381K (102% of the projected budget), achieving a ROAS of 1.55 and Revenue of ₹5,90,402.</p>
-            
-            <p>In December, the <strong>Ruhi 7 Layer Necklace</strong> remained our best seller, while the <strong>Nita Ambani necklace</strong> ranked as the second best seller, though with lower sales compared to the previous month. The <strong>Sehr Choker Gold Brass Necklace</strong> held the third position. Additionally, within the Kundan collection, the <strong>Kundan Green Pearl Choker Necklace Set</strong> showed good performance.</p>
-            
-            <p><strong>Note:</strong> In December, our primary focus was on maintaining our ROAS target as the top priority while also scaling the spends to reach the revenue target.</p>
-            
-            <p style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);"><strong>Excluding November Cancellations:</strong> In the month of December, cancellations worth ₹34,927 were recorded for orders that belonged to November. If we exclude these cancellations from December's data, the effective ROAS for December improves to <strong style="color: #10b981;">1.64</strong> with revenue of <strong style="color: #10b981;">₹6,25,329</strong>.</p>
-        </div>
-
-        <h2 class="section-title">Top Performing Products</h2>
-        
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-name">🏆 Ruhi 7-Layer Gold Necklace</div>
-                <p style="color: #888; font-size: 14px;">Best Seller - Consistent top performer</p>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-name">💎 Nita Ambani CZ Diamond Necklace</div>
-                <p style="color: #888; font-size: 14px;">Second best seller</p>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-name">✨ Sehr Choker Gold Brass Necklace</div>
-                <p style="color: #888; font-size: 14px;">Third best seller - High traction</p>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-name">🌿 Kundan Green Pearl Choker Necklace Set</div>
-                <p style="color: #888; font-size: 14px;">Strong performance from Kundan collection</p>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-name">💚 Nita Ambani Emerald Glow AD Combo Set</div>
-                <p style="color: #888; font-size: 14px;">Necklace & Bangles - Good performance</p>
-            </div>
-        </div>
-
-        <h2 class="section-title">Platform Performance</h2>
-
-        <div class="platform-section">
-            <div class="platform-card">
-                <div class="platform-header">
-                    <div class="platform-name">Meta Ads</div>
-                </div>
-                
-                <div class="platform-stats">
-                    <div class="stat-item">
-                        <div class="stat-label">Total Spent</div>
-                        <div class="stat-value">₹3,73,004</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Total Orders</div>
-                        <div class="stat-value">137</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Total Revenue</div>
-                        <div class="stat-value">₹6,89,743</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">ROAS</div>
-                        <div class="stat-value" style="color: #10b981;">1.85</div>
-                    </div>
-                </div>
-
-                <div class="insights-section">
-                    <div class="insights-title">Key Insights</div>
-                    <ul class="insights-list">
-                        <li>We observed a dip in both sales and ROAS this month, but performance remained close to projected estimates</li>
-                        <li>Ruhi 7 Layer Necklace continued as best seller, followed by Nita Ambani Necklace and Sehr Gold Brass Choker</li>
-                        <li>Kundan Green Pearl Necklace showed strong performance from the Kundan collection</li>
-                        <li>Wedding campaign underperformed and was paused; repositioned into Sehr Collection-focused campaign</li>
-                        <li>Previously best-performing campaign (CBO_3Aud_Broad_19Jul25) showed consistent decline over last 15 days despite optimizations</li>
-                        <li>New LAL audience using top-performing creatives achieved overall ROAS of 2+ in November and continued performing well</li>
-                        <li>New product testing campaign delivered encouraging results with ROAS of 1.95</li>
-                        <li>Meta drove spend toward performing products with new creatives; Ruhi 7 Layer received highest spend with strong results</li>
-                        <li>Cancellation rates improved to 12.33%, lower than previous months</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="platform-card">
-                <div class="platform-header">
-                    <div class="platform-name">Google Ads</div>
-                </div>
-                
-                <div class="platform-stats">
-                    <div class="stat-item">
-                        <div class="stat-label">Total Spent</div>
-                        <div class="stat-value">₹9,119</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Total Orders</div>
-                        <div class="stat-value">1</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Total Revenue</div>
-                        <div class="stat-value">₹6,862</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">ROAS</div>
-                        <div class="stat-value" style="color: #ef4444;">0.75</div>
-                    </div>
-                </div>
-
-                <div class="insights-section">
-                    <div class="insights-title">Key Insights</div>
-                    <ul class="insights-list">
-                        <li>Generated 8,460 impressions with 1 direct conversion worth ₹6,862</li>
-                        <li>Running search campaign for brand visibility when users search directly with brand name</li>
-                        <li>Focus on maintaining top position for brand searches</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="boosting-section">
-            <h3 style="font-size: 24px; margin-bottom: 20px;">Social Media Boosting Activity</h3>
-            <div class="platform-stats">
-                <div class="stat-item">
-                    <div class="stat-label">Investment</div>
-                    <div class="stat-value">₹14,400</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">New Users Reached</div>
-                    <div class="stat-value">9,74,179</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Total Views</div>
-                    <div class="stat-value">16,66,384</div>
-                </div>
-            </div>
-            <div class="insights-section">
-                <ul class="insights-list">
-                    <li>Promoted Instagram Reels to gain views, enhance brand visibility, and build trust</li>
-                    <li>Strategically targeted using high-jewellery-related interests to reach right audience</li>
-                    <li>Promoted Sakhiyaan theme featuring wedding best sellers from Chamakdhamak, Sehr, and Kundan collections</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2 class="section-title">Target vs Actual Performance</h2>
-        
-        <div class="comparison-grid">
-            <div class="comparison-item">
-                <div class="comparison-metric">Spend</div>
-                <div class="comparison-values">
-                    <span class="projected">₹3,73,000</span>
-                    <span class="actual">₹3,81,601</span>
-                </div>
-                <div class="achievement" style="color: #10b981;">102% - More than target ✓</div>
-            </div>
-            
-            <div class="comparison-item">
-                <div class="comparison-metric">Orders</div>
-                <div class="comparison-values">
-                    <span class="projected">170</span>
-                    <span class="actual">142</span>
-                </div>
-                <div class="achievement" style="color: #eab308;">84% - Near target</div>
-            </div>
-            
-            <div class="comparison-item">
-                <div class="comparison-metric">Revenue</div>
-                <div class="comparison-values">
-                    <span class="projected">₹7,47,302</span>
-                    <span class="actual">₹5,90,402</span>
-                </div>
-                <div class="achievement" style="color: #eab308;">79% - Near target</div>
-            </div>
-            
-            <div class="comparison-item">
-                <div class="comparison-metric">ROAS</div>
-                <div class="comparison-values">
-                    <span class="projected">2.00</span>
-                    <span class="actual">1.55</span>
-                </div>
-                <div class="achievement" style="color: #eab308;">77.5% - Near target</div>
-            </div>
-        </div>
-
-        <div class="two-column">
-            <div class="info-box">
-                <h3><span class="icon-success">✓</span> What Worked</h3>
-                <ul class="insights-list">
-                    <li>Ruhi 7 Layer Necklace and Nita Ambani remain best seller products</li>
-                    <li>Older Ruhi 7 Layer creative relaunched with interest-based audience delivered strong performance</li>
-                    <li>Sehr Grass Choker Combo showed high traction</li>
-                    <li>New product testing campaign delivered 1.95 ROAS</li>
-                    <li>Broad women and NEW LAL audiences performed very well</li>
-                    <li>Dance (art) interest audience worked excellently for ROAS and sales</li>
-                </ul>
-            </div>
-            
-            <div class="info-box">
-                <h3><span class="icon-warning">✕</span> What Didn't Work</h3>
-                <ul class="insights-list">
-                    <li>All collection catalogue set campaign lacked traction and was paused</li>
-                    <li>Nita Ambani didn't perform as well compared to other months</li>
-                    <li>CBO_3Aud_Broad_19Jul25 showed consistent decline and was paused</li>
-                    <li>Sehr campaign didn't deliver strong results compared to previous month</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2 class="section-title">January 2026 Strategy</h2>
-        
-        <div class="strategy-section">
-            <p style="font-size: 18px; margin-bottom: 30px;">Getting maximum returns on spend will be the top priority. ROAS will be maintained at 1.82X as the minimum threshold, with close monitoring to scale campaigns with potential to maximize revenue.</p>
-            
-            <div class="strategy-grid">
-                <div class="strategy-item">
-                    <h4>Revenue Focus</h4>
-                    <p style="color: #ccc;">Projecting revenue of ₹6,79,343 with realistic and achievable targets for maximum returns on spend</p>
-                </div>
-                
-                <div class="strategy-item">
-                    <h4>ROAS Target</h4>
-                    <p style="color: #ccc;">Maintaining minimum threshold of 1.82X, closely monitoring and scaling campaigns with strong potential</p>
-                </div>
-                
-                <div class="strategy-item">
-                    <h4>Creative Strategy</h4>
-                    <p style="color: #ccc;">Developing more creatives similar to top-performers, focusing on new shoot creatives that deliver better results</p>
-                </div>
-                
-                <div class="strategy-item">
-                    <h4>Product Focus</h4>
-                    <p style="color: #ccc;">Emphasizing Kundan and Chamak Dhamak collections to identify more winning products</p>
-                </div>
-                
-                <div class="strategy-item">
-                    <h4>Flexibility</h4>
-                    <p style="color: #ccc;">Maintaining agility to scale campaigns showing strong results and adapt to performance trends</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="target-box">
-            <h3>January 2026 Performance Targets</h3>
-            <div class="target-stats">
-                <div class="target-stat">
-                    <div class="target-stat-label">TOTAL SPEND</div>
-                    <div class="target-stat-value">₹3,72,400</div>
-                </div>
-                <div class="target-stat">
-                    <div class="target-stat-label">TOTAL ORDERS</div>
-                    <div class="target-stat-value">154</div>
-                </div>
-                <div class="target-stat">
-                    <div class="target-stat-label">TOTAL REVENUE</div>
-                    <div class="target-stat-value">₹6,79,343</div>
-                </div>
-                <div class="target-stat">
-                    <div class="target-stat-label">TARGET ROAS</div>
-                    <div class="target-stat-value">1.82</div>
-                </div>
-            </div>
-            <p style="margin-top: 30px; color: #888; font-size: 14px;">ROAS projection based on last month's trends, with focus on realistic targets. Priority on current top-performing products while identifying new winners for incremental growth.</p>
-        </div>
-
+    <!-- Animated Background -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-brand-base opacity-20 blur-[100px] animate-blob rounded-full mix-blend-screen"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-base opacity-15 blur-[80px] animate-blob rounded-full mix-blend-screen" style="animation-delay: 2s"></div>
+        <div class="absolute top-[40%] left-[40%] w-[400px] h-[400px] bg-blue-900 opacity-10 blur-[90px] animate-blob rounded-full mix-blend-screen" style="animation-delay: 4s"></div>
+        <!-- Noise Texture -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-16 relative z-10">
+        
+        <!-- Header -->
+        <header class="text-center mb-24 animate-on-scroll">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-border bg-brand-glass text-xs uppercase tracking-[0.2em] text-slate-400 mb-6 backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                Monthly Report
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-500 mb-6 tracking-tight">
+                Complimento
+            </h1>
+            <div class="flex items-center justify-center gap-3 text-lg text-slate-400 font-light border-y border-brand-border/30 w-fit mx-auto py-4 px-12">
+                <i data-lucide="calendar" class="w-5 h-5 opacity-70"></i>
+                <span>December 2025</span>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="mb-20">
+            <div class="flex items-end justify-between mb-8 animate-on-scroll">
+                <h2 class="text-3xl font-serif text-white">Executive Summary</h2>
+                <div class="h-[1px] flex-1 bg-gradient-to-r from-brand-base to-transparent ml-6 opacity-50"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-6 animate-on-scroll" style="transition-delay: 100ms;">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 rounded-xl bg-white/5 text-slate-300">
+                            <i data-lucide="indian-rupee" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold px-2 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">
+                            Exceeded
+                        </span>
+                    </div>
+                    <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">Total Spend</div>
+                    <div class="text-2xl font-serif font-bold text-white mb-2">₹3,81,601</div>
+                    <div class="text-xs text-slate-500">102% of projected budget</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-6 animate-on-scroll" style="transition-delay: 200ms;">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 rounded-xl bg-white/5 text-slate-300">
+                            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold px-2 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">
+                            Near Target
+                        </span>
+                    </div>
+                    <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">Shopify Orders</div>
+                    <div class="text-2xl font-serif font-bold text-white mb-2">142</div>
+                    <div class="text-xs text-slate-500">84% of target</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-6 animate-on-scroll" style="transition-delay: 300ms;">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 rounded-xl bg-white/5 text-slate-300">
+                            <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold px-2 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">
+                            Near Target
+                        </span>
+                    </div>
+                    <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">Revenue</div>
+                    <div class="text-2xl font-serif font-bold text-white mb-2">₹5,90,402</div>
+                    <div class="text-xs text-slate-500">79% of target</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card rounded-2xl p-6 animate-on-scroll" style="transition-delay: 400ms;">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 rounded-xl bg-white/5 text-slate-300">
+                            <i data-lucide="percent" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold px-2 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 uppercase tracking-wide">
+                            Near Target
+                        </span>
+                    </div>
+                    <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">ROAS</div>
+                    <div class="text-2xl font-serif font-bold text-white mb-2">1.55</div>
+                    <div class="text-xs text-slate-500">77% of target</div>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl border-l-4 border-l-[rgba(31,51,69,1)] animate-on-scroll">
+            <p class="text-lg leading-relaxed text-slate-300 font-light">
+                In December, we anticipated higher scale to drive revenue growth and estimated a spend of 
+                <span class="text-white font-medium">₹373K</span>. While prioritizing ROAS stability, we ultimately spent 
+                <span class="text-white font-medium">₹381K</span> (102% of projected) and achieved a ROAS of 
+                <span class="text-white font-medium">1.55</span>, generating a total revenue of 
+                <span class="text-white font-medium">₹5,90,402</span>.
+                <br><br>
+                The <strong>Ruhi 7-Layer Necklace</strong> continued to be our top-performing product, followed by the 
+                <strong>Nita Ambani Necklace</strong> as the second best seller, although with relatively lower sales compared 
+                to December. The <strong>Sehr Choker Gold Brass Necklace</strong> secured the third position, while within the 
+                Kundan collection, the <strong>Kundan Green Pearl Choker Necklace Set</strong> showed promising performance.
+                <br><br>
+                Our primary focus throughout December remained on maintaining the ROAS benchmark as the top priority, while 
+                simultaneously scaling spends to ensure we stayed on track to achieve the overall revenue target.
+                <br><br>
+                Additionally, December included cancellations worth 
+                <span class="text-white font-medium">₹34,927</span> that were attributed to December orders. Excluding these 
+                cancellations from December’s performance, the effective revenue stands at 
+                <span class="text-white font-medium">₹6,25,329</span>, improving the effective ROAS to 
+                <span class="text-white font-medium">1.64</span>.
+            </p>
+            </div>
+
+        </section>
+
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-12 gap-8 mb-20">
+            
+            <!-- Products List (Left) -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="flex items-center gap-4 mb-2 animate-on-scroll">
+                    <h2 class="text-2xl font-serif text-white">Top Products</h2>
+                    <div class="h-[1px] flex-1 bg-brand-border"></div>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- Product Items -->
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-5 group animate-on-scroll hover:pl-6 transition-all">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-brand-base to-black text-white font-serif font-bold text-lg border border-white/10 shadow-lg">1</div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium group-hover:text-blue-200 transition-colors">Ruhi 7-Layer Gold Necklacet</h4>
+                            <!-- <p class="text-xs text-slate-500 mt-0.5 uppercase tracking-wide">Top Revenue Driver</p> -->
+                        </div>
+                        <i data-lucide="crown" class="w-5 h-5 text-yellow-500/50"></i>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-5 group animate-on-scroll hover:pl-6 transition-all" style="transition-delay: 50ms;">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-brand-glass text-white font-serif font-bold border border-white/5">2</div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium group-hover:text-blue-200 transition-colors">Nita Ambani CZ Diamond Necklace</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 uppercase tracking-wide">New Winner</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-5 group animate-on-scroll hover:pl-6 transition-all" style="transition-delay: 100ms;">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-brand-glass text-white font-serif font-bold border border-white/5">3</div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium group-hover:text-blue-200 transition-colors">Sehr Choker Gold Brass Necklace</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 uppercase tracking-wide">High Velocity</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-5 group animate-on-scroll hover:pl-6 transition-all" style="transition-delay: 150ms;">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-brand-glass text-white font-serif font-bold border border-white/5">4</div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium group-hover:text-blue-200 transition-colors">Kundan Green Pearl Choker Necklace Set</h4>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-5 group animate-on-scroll hover:pl-6 transition-all" style="transition-delay: 200ms;">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-brand-glass text-white font-serif font-bold border border-white/5">5</div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium group-hover:text-blue-200 transition-colors">Nita Ambani Emerald Glow American Diamond Combo Set – Necklace & Bangles</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Platform Performance Detailed -->
+        <section class="mb-24 animate-on-scroll">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-serif text-white">Platform Performance & Insights</h2>
+                <div class="h-[1px] flex-1 bg-brand-border"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Meta Ads (Larger) -->
+                <div class="lg:col-span-2 glass-card p-8 rounded-2xl relative overflow-hidden group">
+                     <div class="absolute right-[-10%] top-[-10%] w-60 h-60 bg-blue-500/10 blur-[60px] rounded-full group-hover:bg-blue-500/20 transition-all duration-500"></div>
+                     
+                     <!-- Meta Header & Stats -->
+                     <div class="flex flex-wrap items-center justify-between gap-6 mb-8 relative z-10 border-b border-white/10 pb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-blue-600 rounded-lg shadow-lg shadow-blue-900/20">
+                                <i data-lucide="layers" class="text-white w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Meta Ads</h3>
+                                <p class="text-xs text-blue-300 uppercase tracking-widest">Primary Channel</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8">
+                             <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Spend</div>
+                                <div class="text-xl font-serif font-bold">₹3,73,004</div>
+                            </div>
+                             <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Revenue</div>
+                                <div class="text-xl font-serif font-bold">₹6,89,743</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">ROAS</div>
+                                <div class="text-xl font-serif font-bold text-green-400">1.85</div>
+                            </div>
+                             <div>
+                                <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Orders</div>
+                                <div class="text-xl font-serif font-bold">137</div>
+                            </div>
+                        </div>
+                     </div>
+
+                     <!-- Meta Insights -->
+                     <div class="relative z-10">
+                        <h4 class="text-lg font-serif text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-yellow-500"></i>
+                            Key Insights & Recommendations
+                        </h4>
+
+                        <ul class="space-y-4">
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Overall Performance:</strong> We observed a dip in both sales and ROAS during the month; however, performance remained largely in line with our projected estimates.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Top Products:</strong> The Ruhi 7 Layer Necklace continued to be the best seller, followed by the Nita Ambani Necklace in second position and the Sehr Gold Brass Choker as the third best seller.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Category Performance:</strong> Within the Kundan collection, the Kundan Green Pearl Necklace demonstrated strong and consistent performance.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Campaign Optimization:</strong> The Wedding campaign underperformed and was paused. To improve efficiency, the creative testing budget was repositioned into a Sehr Collection–focused campaign for more targeted product testing.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Campaign Decline:</strong> The previously top-performing campaign, CBO_3Aud_Broad_19Jul25, showed a consistent performance decline over the last 15 days of December despite multiple optimization efforts.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Audience Strategy:</strong> A new LAL audience built using top-performing creatives—which had delivered 2+ ROAS in December—continued to perform well in December, effectively reaching and engaging relevant audience segments.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Product Testing:</strong> A new testing campaign was launched with two ad sets—one featuring new products with new shoot creatives, and another featuring previously performing products with new shoot creatives—both delivering encouraging early results.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Spend Allocation:</strong> Meta optimized spend toward previously performing products paired with new creatives, with the Ruhi 7 Layer Necklace receiving the highest spend and delivering strong results.
+                            </span>
+                            </li>
+
+                            <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <span>
+                                <strong class="text-white">Operational Improvement:</strong> Cancellation rates improved significantly this month, reducing to 12.33%, which is lower compared to previous months.
+                            </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Google Ads (Smaller) -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group flex flex-col">
+                    <div class="absolute right-[-10%] top-[-10%] w-40 h-40 bg-red-500/10 blur-[50px] rounded-full group-hover:bg-red-500/20 transition-all duration-500"></div>
+                    
+                    <div class="flex items-center gap-3 mb-8 relative z-10 border-b border-white/10 pb-6">
+                        <div class="p-3 bg-red-600 rounded-lg shadow-lg shadow-red-900/20">
+                            <i data-lucide="target" class="text-white w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Google Ads</h3>
+                            <p class="text-xs text-red-300 uppercase tracking-widest">Brand Search</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mb-8 relative z-10">
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Spend</div>
+                            <div class="text-xl font-serif font-bold">₹9,119</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Impressions</div>
+                            <div class="text-xl font-serif font-bold">8,460</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Conversion</div>
+                            <div class="text-xl font-serif font-bold">₹6,862</div>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 mt-auto">
+                        <h4 class="text-sm font-serif text-white mb-3">Key Insights</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            We spent ₹9119 on Google Ads in September, generating 8460 impressions and receiving 1 direct conversion worth ₹6862
+                        </p>
+                        <p class="text-slate-300 text-sm leading-relaxed mt-5">
+                            We only run search campaign in google ads for our brand to showing on top when user search directly with brandname.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Performing Creatives Section -->
+        <section class="mb-24 animate-on-scroll">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif text-white mb-3">Top Performing Creatives</h2>
+                <div class="inline-flex flex-col items-center group cursor-default">
+                    <!-- <span class="text-sm text-slate-400 uppercase tracking-widest mb-1 group-hover:text-white transition-colors">Sale Period</span> -->
+                    <div class="w-12 h-0.5 bg-brand-base group-hover:w-full transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Creative Card 1 -->
+                <div class="glass-card p-6 rounded-2xl hover:border-brand-border/50 transition-all duration-300">
+                    <!-- Ad Preview Mockup -->
+                    <div class="bg-white rounded-xl overflow-hidden mb-6 shadow-2xl mx-auto max-w-[300px]">
+                        <!-- Ad Header -->
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-yellow-700 text-xs">Z</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-black leading-tight">Complimento</div>
+                                    <div class="text-[8px] text-gray-500">Sponsored</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-400">
+                                <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <!-- Ad Content -->
+                        <div class="px-3 py-2">
+                            <!-- <p class="text-[10px] text-gray-800 leading-tight mb-2">Celebrate the festival of prosperity with timeless pieces from our collection. Get 30% off sitewide...</p> -->
+                            <div class="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative group/img">
+                                <img src="./dec/image (49).png" alt="Ad Creative 1" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors"></div>
+                            </div>
+                        </div>
+                        <!-- Ad Footer -->
+                        <div class="p-3 bg-gray-50 flex justify-between items-center border-t border-gray-100">
+                            <div class="text-[10px] font-bold text-gray-600">Shop Now</div>
+                            <button class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded text-[9px] font-bold text-black transition-colors">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹38,573</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Spends</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹1,18,225</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Revenue</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">3.17%</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">CTR</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">3.06</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">ROAS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Card 2 -->
+                <div class="glass-card p-6 rounded-2xl hover:border-brand-border/50 transition-all duration-300" style="transition-delay: 100ms;">
+                    <div class="bg-white rounded-xl overflow-hidden mb-6 shadow-2xl mx-auto max-w-[300px]">
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-yellow-700 text-xs">Z</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-black leading-tight">Complimento</div>
+                                    <div class="text-[8px] text-gray-500">Sponsored</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-400"><i data-lucide="more-horizontal" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="px-3 py-2">
+                            <!-- <p class="text-[10px] text-gray-800 leading-tight mb-2">New arrivals are here! The perfect blend of tradition and modern elegance...</p> -->
+                            <div class="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative">
+                                <img src="./dec/image (50).png" alt="Ad Creative 2" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50 flex justify-between items-center border-t border-gray-100">
+                            <div class="text-[10px] font-bold text-gray-600">Shop Now</div>
+                            <button class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded text-[9px] font-bold text-black transition-colors">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹22,039</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Spends</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹50,963</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Revenue</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">3.77%</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">CTR</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">2.31</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">ROAS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Card 3 -->
+                <div class="glass-card p-6 rounded-2xl hover:border-brand-border/50 transition-all duration-300" style="transition-delay: 200ms;">
+                    <div class="bg-white rounded-xl overflow-hidden mb-6 shadow-2xl mx-auto max-w-[300px]">
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-yellow-700 text-xs">Z</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-black leading-tight">Complimento</div>
+                                    <div class="text-[8px] text-gray-500">Sponsored</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-400"><i data-lucide="more-horizontal" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="px-3 py-2">
+                            <!-- <p class="text-[10px] text-gray-800 leading-tight mb-2">Wedding season specials. Handcrafted jewelry that tells your story...</p> -->
+                            <div class="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative">
+                                <img src="./dec/image (51).png" alt="Ad Creative 3" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50 flex justify-between items-center border-t border-gray-100">
+                            <div class="text-[10px] font-bold text-gray-600">Shop Now</div>
+                            <button class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded text-[9px] font-bold text-black transition-colors">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹18,642</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Spends</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹49,106</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Revenue</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">2.63%</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">CTR</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">3.41</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">ROAS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Card 4 -->
+                <div class="glass-card p-6 rounded-2xl hover:border-brand-border/50 transition-all duration-300" style="transition-delay: 200ms;">
+                    <div class="bg-white rounded-xl overflow-hidden mb-6 shadow-2xl mx-auto max-w-[300px]">
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-yellow-700 text-xs">Z</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-black leading-tight">Complimento</div>
+                                    <div class="text-[8px] text-gray-500">Sponsored</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-400"><i data-lucide="more-horizontal" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="px-3 py-2">
+                            <!-- <p class="text-[10px] text-gray-800 leading-tight mb-2">Wedding season specials. Handcrafted jewelry that tells your story...</p> -->
+                            <div class="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative">
+                                <img src="./dec/image (52).png" alt="Ad Creative 3" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50 flex justify-between items-center border-t border-gray-100">
+                            <div class="text-[10px] font-bold text-gray-600">Shop Now</div>
+                            <button class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded text-[9px] font-bold text-black transition-colors">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹10,040</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Spends</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹39,421</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Revenue</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">3.19%</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">CTR</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">3.93</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">ROAS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chart Section -->
+        <section class="mb-20 animate-on-scroll">
+            <div class="glass-card p-8 rounded-2xl">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-8">
+                    <div>
+                        <h3 class="text-2xl font-serif text-white mb-2">Target vs Actual Performance</h3>
+                        <p class="text-slate-400 text-sm">Visual comparison of projected targets against actual results.</p>
+                    </div>
+                    <div class="flex gap-4 mt-4 md:mt-0">
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <span class="w-3 h-3 rounded-sm bg-[rgba(255,255,255,0.2)]"></span> Projected
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <span class="w-3 h-3 rounded-sm bg-[rgba(31,51,69,1)]"></span> Actual
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="h-[300px] w-full">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights Grid -->
+        <section class="mb-20">
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- What Worked -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-t-green-500/50 animate-on-scroll">
+                <div class="flex items-center gap-3 mb-6">
+                    <i data-lucide="check-circle-2" class="text-green-400"></i>
+                    <h3 class="text-xl font-serif text-white">What Worked</h3>
+                </div>
+
+                <ul class="space-y-4">
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                    Ruhi 7 Layer Necklace and Nita Ambani Necklace continued to be the best-selling products.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                    The older Ruhi 7 Layer creative initially declined in December, but after relaunching and testing it across multiple audiences, one interest-based audience picked up and delivered very strong performance.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                    Sehr Gold Brass Choker combo showed high traction in terms of both ROAS and sales.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                    A new product testing campaign launched mid-month delivered encouraging results with an overall ROAS of 1.95.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                    Broad women and new LAL audiences performed very well throughout the month.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                    An interest-based audience targeting Dance (Art) delivered strong results in terms of both ROAS and sales.
+                    </li>
+                </ul>
+                </div>
+
+                <!-- What Didn't Work -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-t-red-500/50 animate-on-scroll" style="transition-delay: 100ms;">
+                <div class="flex items-center gap-3 mb-6">
+                    <i data-lucide="x-circle" class="text-red-400"></i>
+                    <h3 class="text-xl font-serif text-white">What Didn’t Work</h3>
+                </div>
+
+                <ul class="space-y-4">
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                    The all-collection catalog sales campaign failed to gain traction and was paused.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                    Nita Ambani Necklace underperformed in December compared to its performance in previous months.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                    The previously best-performing campaign, CBO_3Aud_Broad_19Jul25, showed a consistent decline during the last 15 days of December despite multiple optimizations and was paused toward month end.
+                    </li>
+
+                    <li class="flex gap-3 text-slate-300 text-sm leading-relaxed">
+                    <span class="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                    The Sehr collection–focused campaign did not deliver results at the same level as the previous month.
+                    </li>
+                </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Brand Building Activities -->
+        <section class="mb-24 animate-on-scroll">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-serif text-white">Brand Building Activities</h2>
+                <div class="h-[1px] flex-1 bg-brand-border"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-1 gap-8">
+                <!-- Activity 1: Awareness -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col h-full hover:border-yellow-500/30 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-xl font-bold text-white group-hover:text-yellow-200 transition-colors">Awareness Campaign</h4>
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-yellow-400">
+                            <i data-lucide="megaphone" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Ad Spent</div>
+                            <div class="text-xl font-serif font-bold text-white">₹14.4k</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">views</div>
+                            <div class="text-xl font-serif font-bold text-white">16,66,684</div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Reach</div>
+                            <div class="text-xl font-serif font-bold text-blue-200">9,74,179 <span class="text-sm font-sans font-normal text-slate-400">new people</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto pt-6 border-t border-white/10">
+                        <ul class="space-y-3 text-sm text-slate-300 leading-relaxed">
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> We’ve invested approximately ₹14.4K last month to promote different categories of
+Instagram Reels with the objective of gaining more views, enhancing brand visibility, and
+building trust and credibility.</li>
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> The promoted video helped the account reach 9,74,179 new users, appearing across their
+feeds, and achieved a total views of 16,66,384</li>
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> This campaign was strategically targeted using multiple high-jewellery-related interests to
+ensure visibility among the right audience segments, avoiding any irrelevant awareness
+reach.</li>
+                            <li class="flex gap-2"><span class="text-yellow-500">•</span> As part of our social media activity, we also promoted Instagram reels on the sakhiyaan
+theme featuring the wedding best sellers in which products are included from
+chamakdhamak & sehr and kundan during the month.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+                    <!-- Top Performing Creatives Section -->
+        <section class="mb-24 animate-on-scroll">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif text-white mb-3">Social media Boosted posts</h2>
+                <div class="inline-flex flex-col items-center group cursor-default">
+                    <!-- <span class="text-sm text-slate-400 uppercase tracking-widest mb-1 group-hover:text-white transition-colors">Sale Period</span> -->
+                    <div class="w-12 h-0.5 bg-brand-base group-hover:w-full transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Creative Card 1 -->
+                <div class="glass-card p-6 rounded-2xl hover:border-brand-border/50 transition-all duration-300">
+                    <!-- Ad Preview Mockup -->
+                    <div class="bg-white rounded-xl overflow-hidden mb-6 shadow-2xl mx-auto max-w-[300px]">
+                        <!-- Ad Header -->
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-yellow-700 text-xs">Z</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-black leading-tight">Complimento</div>
+                                    <div class="text-[8px] text-gray-500">Sponsored</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-400">
+                                <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <!-- Ad Content -->
+                        <div class="px-3 py-2">
+                            <!-- <p class="text-[10px] text-gray-800 leading-tight mb-2">Celebrate the festival of prosperity with timeless pieces from our collection. Get 30% off sitewide...</p> -->
+                            <div class="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative group/img">
+                                <img src="./dec/image (47).png" alt="Ad Creative 1" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors"></div>
+                            </div>
+                        </div>
+                        <!-- Ad Footer -->
+                        <div class="p-3 bg-gray-50 flex justify-between items-center border-t border-gray-100">
+                            <div class="text-[10px] font-bold text-gray-600">Shop Now</div>
+                            <button class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded text-[9px] font-bold text-black transition-colors">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹1,942</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Spends</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">224213</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">views</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Card 2 -->
+                <div class="glass-card p-6 rounded-2xl hover:border-brand-border/50 transition-all duration-300" style="transition-delay: 100ms;">
+                    <div class="bg-white rounded-xl overflow-hidden mb-6 shadow-2xl mx-auto max-w-[300px]">
+                        <div class="flex justify-between items-center p-3 border-b border-gray-100">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-yellow-700 text-xs">Z</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] font-bold text-black leading-tight">Complimento</div>
+                                    <div class="text-[8px] text-gray-500">Sponsored</div>
+                                </div>
+                            </div>
+                            <div class="text-gray-400"><i data-lucide="more-horizontal" class="w-4 h-4"></i></div>
+                        </div>
+                        <div class="px-3 py-2">
+                            <!-- <p class="text-[10px] text-gray-800 leading-tight mb-2">New arrivals are here! The perfect blend of tradition and modern elegance...</p> -->
+                            <div class="aspect-[4/5] bg-gray-100 rounded-lg overflow-hidden relative">
+                                <img src="./dec/image (48).png" alt="Ad Creative 2" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="p-3 bg-gray-50 flex justify-between items-center border-t border-gray-100">
+                            <div class="text-[10px] font-bold text-gray-600">Shop Now</div>
+                            <button class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded text-[9px] font-bold text-black transition-colors">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">₹1,951</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">Spends</div>
+                        </div>
+                        <div class="bg-black/40 p-3 rounded-lg text-center border border-white/5 hover:border-white/10 transition-colors">
+                            <div class="text-lg font-serif font-bold text-white">182659</div>
+                            <div class="text-[9px] text-slate-500 uppercase tracking-wider font-bold">views</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        </section>
+
+        <!-- Strategy & Targets -->
+        <section class="grid lg:grid-cols-2 gap-12 items-start mb-24">
+        <!-- Strategy List -->
+        <div class="space-y-6">
+        <h2 class="text-2xl font-serif text-white mb-4 animate-on-scroll">
+            Next Month’s Strategy
+        </h2>
+
+        <div class="glass-card p-6 rounded-xl border-l-2 border-l-white/20 hover:border-l-brand-base animate-on-scroll">
+            <h4 class="text-lg font-bold text-white mb-2">Revenue Target</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">
+            Maximizing returns on ad spend will remain the top priority while targeting a realistic and achievable revenue of ₹6,79,343 for the month.
+            </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border-l-2 border-l-white/20 hover:border-l-brand-base animate-on-scroll" style="transition-delay: 50ms;">
+            <h4 class="text-lg font-bold text-white mb-2">ROAS Discipline</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">
+            ROAS will be maintained at a minimum threshold of 1.82X. Campaigns will be closely monitored and scaled wherever there is potential to drive higher revenue efficiently.
+            </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border-l-2 border-l-white/20 hover:border-l-brand-base animate-on-scroll" style="transition-delay: 100ms;">
+            <h4 class="text-lg font-bold text-white mb-2">Creative Strategy</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">
+            We will develop and deploy more creatives inspired by top-performing formats, with a stronger focus on new shoot creatives that have been consistently delivering better performance.
+            </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border-l-2 border-l-white/20 hover:border-l-brand-base animate-on-scroll" style="transition-delay: 150ms;">
+            <h4 class="text-lg font-bold text-white mb-2">Product Consistency</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">
+            Increased focus will be placed on the Kundan and Chamak Dhamak collections to identify and scale additional winning products.
+            </p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl border-l-2 border-l-white/20 hover:border-l-brand-base animate-on-scroll" style="transition-delay: 200ms;">
+            <h4 class="text-lg font-bold text-white mb-2">Scaling Flexibility</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">
+            We will maintain flexibility to aggressively scale campaigns whenever existing campaigns demonstrate strong and sustainable performance signals.
+            </p>
+        </div>
+        </div>
+
+
+            <!-- Target Card -->
+            <div class="sticky top-8 animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="glass-card p-10 rounded-3xl bg-gradient-to-br from-brand-base to-black text-center border-brand-border shadow-2xl">
+                    <div class="inline-flex p-3 rounded-full bg-white/10 mb-6 border border-white/10">
+                        <i data-lucide="crosshair" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif text-white mb-8">December Targets</h3>
+                    
+                    <div class="grid grid-cols-2 gap-8 text-left">
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase text-slate-400 tracking-widest">Spend</div>
+                            <div class="text-2xl font-bold text-white">₹3.72L</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase text-slate-400 tracking-widest">Orders</div>
+                            <div class="text-2xl font-bold text-white">154</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase text-slate-400 tracking-widest">Revenue</div>
+                            <div class="text-2xl font-bold text-green-400">₹6.79L</div>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase text-slate-400 tracking-widest">ROAS</div>
+                            <div class="text-2xl font-bold text-blue-300">1.82</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-white/10 text-xs text-slate-500 leading-relaxed">
+                        The ROAS projection is based on last month’s trends, with a focus on setting more realistic and
+achievable targets. This month, we will prioritize current top-performing products to maintain their
+performance, while also identifying new winner products to drive incremental growth.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-600 text-sm py-12 border-t border-white/5 animate-on-scroll">
+            <p class="font-serif text-slate-500 mb-2">Complimento</p>
+            <p class="text-xs tracking-wider opacity-60">© 2025 - Report By BlackCoffeeMedia</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        
+        // Custom gradient for bars
+        const gradientProjected = ctx.createLinearGradient(0, 0, 0, 300);
+        gradientProjected.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+        gradientProjected.addColorStop(1, 'rgba(255, 255, 255, 0.05)');
+
+        const gradientActual = ctx.createLinearGradient(0, 0, 0, 300);
+        gradientActual.addColorStop(0, 'rgba(31, 51, 69, 1)');
+        gradientActual.addColorStop(1, 'rgba(31, 51, 69, 0.4)');
+
+        const gradientSuccess = ctx.createLinearGradient(0, 0, 0, 300);
+        gradientSuccess.addColorStop(0, 'rgba(74, 222, 128, 0.8)');
+        gradientSuccess.addColorStop(1, 'rgba(74, 222, 128, 0.2)');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Spend', 'Revenue'],
+                datasets: [
+                    {
+                        label: 'Projected',
+                        data: [373000, 747302],
+                        backgroundColor: gradientProjected,
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    },
+                    {
+                        label: 'Actual',
+                        data: [381601, 590402],
+                        backgroundColor: (context) => {
+                            // Conditional coloring based on index
+                            const index = context.dataIndex;
+                            return index === 1 ? gradientSuccess : gradientActual;
+                        },
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#0a0a0a',
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        titleColor: '#fff',
+                        bodyColor: '#ccc',
+                        padding: 12,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += '₹' + context.parsed.y.toLocaleString('en-IN');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)',
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#64748b',
+                            font: { family: 'DM Sans' },
+                            callback: function(value) {
+                                return '₹' + (value/1000) + 'k';
+                            }
+                        },
+                        border: { display: false }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { family: 'DM Sans', weight: 'bold' }
+                        },
+                        border: { display: false }
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+    </script>
 </body>
 </html>
