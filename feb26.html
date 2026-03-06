@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complimento — February 2026 Performance Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2D0A2E;
+    --plum-mid: #4A1942;
+    --plum-light: #6B2D68;
+    --gold: #C9A84C;
+    --gold-bright: #E8C96A;
+    --gold-pale: #F5E8C0;
+    --cream: #FAF6EE;
+    --cream-mid: #F0E8D8;
+    --ink: #1A0A1B;
+    --muted: #8A7A6A;
+    --white: #FFFFFF;
+    --green: #2A6B45;
+    --green-bg: #EDF7F1;
+    --red: #8B2020;
+    --red-bg: #FDF0F0;
+    --blue: #1A3A6B;
+    --blue-bg: #EEF2FA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--plum);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #5C1A5A22 0%, transparent 70%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 1px solid #C9A84C18;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseRing 6s ease-in-out infinite;
+  }
+  .hero-ornament:nth-child(2) {
+    width: 700px; height: 700px;
+    border-color: #C9A84C0C;
+    animation-delay: 1s;
+  }
+  .hero-ornament:nth-child(3) {
+    width: 900px; height: 900px;
+    border-color: #C9A84C06;
+    animation-delay: 2s;
+  }
+  @keyframes pulseRing {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.15em;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300;
+    color: var(--gold-pale);
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-period {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: #A09080;
+    margin-top: 0.5rem;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #C9A84C30;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .hero-stat {
+    padding: 2rem 3rem;
+    text-align: center;
+    position: relative;
+  }
+  .hero-stat + .hero-stat::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 20%; bottom: 20%;
+    width: 1px;
+    background: #C9A84C30;
+  }
+
+  .hero-stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--gold-bright);
+    line-height: 1;
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9A8A7A;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section {
+    padding: 6rem 0;
+  }
+  .section + .section {
+    border-top: 1px solid var(--cream-mid);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cream-mid);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--plum);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+  }
+
+  /* ── KPI GRID ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--cream-mid);
+    border: 1px solid var(--cream-mid);
+    margin-bottom: 4rem;
+  }
+
+  .kpi-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    z-index: 1;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .kpi-card.gold::before { background: var(--gold); }
+  .kpi-card.plum::before { background: var(--plum); }
+  .kpi-card.green::before { background: var(--green); }
+  .kpi-card.blue::before { background: var(--blue); }
+
+  .kpi-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .kpi-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .kpi-card.gold .kpi-value { color: var(--gold); }
+  .kpi-card.plum .kpi-value { color: var(--plum); }
+  .kpi-card.green .kpi-value { color: var(--green); }
+  .kpi-card.blue .kpi-value { color: var(--blue); }
+
+  .kpi-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ── PLATFORM TABLE ── */
+  .platform-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+  }
+  .platform-table th {
+    background: var(--plum);
+    color: var(--gold-pale);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .platform-table td {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+  .platform-table tr:nth-child(even) td { background: #FAF8F5; }
+  .platform-table .platform-name {
+    font-weight: 500;
+    color: var(--plum);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .platform-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .platform-table .total-row td {
+    background: var(--plum);
+    color: var(--gold-pale);
+    font-weight: 500;
+    border: none;
+  }
+  .platform-table .total-row .platform-name { color: var(--gold-bright); }
+  .roas-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .roas-good { background: var(--green-bg); color: var(--green); }
+  .roas-zero { background: #f5f5f5; color: #aaa; }
+  .roas-total { background: #C9A84C22; color: var(--gold); }
+
+  /* ── TWO COLUMN ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: var(--plum);
+    color: var(--cream);
+    padding: 2.5rem;
+    border-left: 3px solid var(--gold);
+  }
+
+  .insight-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    margin-bottom: 1.5rem;
+  }
+
+  .insight-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+
+  .insight-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+
+  .insight-text {
+    font-size: 0.88rem;
+    color: #C8BAA8;
+    line-height: 1.6;
+  }
+
+  /* ── WORKED/IMPROVE CARDS ── */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .verdict-card {
+    padding: 2rem;
+    border-left: 3px solid;
+  }
+  .verdict-card.worked {
+    background: var(--green-bg);
+    border-color: var(--green);
+  }
+  .verdict-card.improve {
+    background: var(--red-bg);
+    border-color: var(--red);
+  }
+
+  .verdict-head {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .worked .verdict-head { color: var(--green); }
+  .improve .verdict-head { color: var(--red); }
+
+  .verdict-item {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.88rem;
+    color: var(--ink);
+    align-items: flex-start;
+  }
+  .verdict-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+  .worked .verdict-item::before { background: var(--green); }
+  .improve .verdict-item::before { background: var(--red); }
+
+  /* ── META PLATFORM SECTION ── */
+  .platform-hero {
+    background: var(--plum);
+    padding: 4rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .platform-hero::after {
+    content: 'M';
+    position: absolute;
+    right: -1rem;
+    top: -2rem;
+    font-size: 18rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffffff06;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .platform-hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .platform-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+
+  .platform-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .platform-metric-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--gold-bright);
+    line-height: 1;
+  }
+  .platform-metric-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9A8A7A;
+    margin-top: 0.4rem;
+  }
+  .platform-metric-sub {
+    font-size: 0.78rem;
+    color: #7A6A5A;
+    margin-top: 0.2rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── GOOGLE SECTION ── */
+  .google-platform-hero {
+    background: #1E2D4A;
+    padding: 4rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .google-platform-hero::after {
+    content: 'G';
+    position: absolute;
+    right: -1rem;
+    top: -2rem;
+    font-size: 18rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: #ffffff06;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .google-platform-hero .platform-hero-label { color: #7BA8E8; }
+  .google-platform-hero .platform-hero-title { color: var(--white); }
+  .google-platform-hero .platform-metric-val { color: #7BA8E8; }
+  .google-platform-hero .platform-metric-label { color: #8A9AAA; }
+  .google-platform-hero .platform-metric-sub { color: #5A6A7A; }
+
+  /* ── ACTION ITEMS ── */
+  .action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--cream-mid);
+    border: 1px solid var(--cream-mid);
+  }
+
+  .action-item {
+    background: var(--white);
+    padding: 1.5rem 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .action-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--cream-mid);
+    line-height: 1;
+    min-width: 2rem;
+    flex-shrink: 0;
+  }
+  .action-content h4 {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--plum);
+    margin-bottom: 0.3rem;
+  }
+  .action-content p {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ── PROJECTIONS ── */
+  .projections-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+  }
+  .projections-table th {
+    background: var(--plum);
+    color: var(--gold-pale);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .projections-table td {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+  .projections-table tr:nth-child(even) td { background: #FAF8F5; }
+  .change-pos { color: var(--green); font-family: 'DM Mono', monospace; font-size: 0.85rem; font-weight: 500; }
+  .change-neg { color: var(--red); font-family: 'DM Mono', monospace; font-size: 0.85rem; font-weight: 500; }
+  .metric-label-cell { font-weight: 500; color: var(--plum); }
+
+  /* ── PRIORITY CARDS ── */
+  .priority-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .priority-card {
+    background: var(--white);
+    border: 1px solid var(--cream-mid);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .priority-card:hover {
+    border-color: var(--gold);
+  }
+
+  .priority-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--cream-mid);
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    line-height: 1;
+  }
+
+  .priority-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .priority-title {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--plum);
+    margin-bottom: 0.5rem;
+  }
+
+  .priority-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── RISK TABLE ── */
+  .risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .risk-table th {
+    background: #F5F0E8;
+    color: var(--plum);
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .risk-table td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+  .risk-table tr:last-child td { border: none; }
+  .risk-badge {
+    display: inline-block;
+    padding: 0.15rem 0.7rem;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .risk-high { background: #FDEAEA; color: var(--red); }
+  .risk-med { background: #FEF6E0; color: #7A5A00; }
+  .risk-low { background: var(--green-bg); color: var(--green); }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    background: var(--plum);
+    color: var(--white);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .conclusion::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #5C1A5A22 0%, transparent 70%);
+  }
+  .conclusion .container { position: relative; z-index: 1; }
+
+  .conclusion-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .conclusion-body {
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    text-align: center;
+    color: #C8BAA8;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #C9A84C22;
+    border: 1px solid #C9A84C22;
+  }
+
+  .focus-card {
+    background: var(--plum-mid);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .focus-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .focus-title {
+    font-weight: 500;
+    color: var(--gold-pale);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  .focus-desc {
+    font-size: 0.8rem;
+    color: #9A8A7A;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    padding: 2.5rem 0;
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-meta {
+    font-size: 0.75rem;
+    color: #5A4A3A;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── DIVIDER ORNAMENT ── */
+  .ornament-divider {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    opacity: 0.4;
+  }
+
+  /* ── DARK INSIGHT STRIP ── */
+  .insight-strip {
+    background: var(--plum);
+    padding: 3rem;
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .strip-item {
+    text-align: center;
+    padding: 1.5rem;
+    border-right: 1px solid #C9A84C20;
+  }
+  .strip-item:last-child { border: none; }
+  .strip-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--gold-bright);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .strip-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7A6A5A;
+  }
+
+  /* ── RECOMMENDATION BOX ── */
+  .rec-box {
+    background: #FEF6E0;
+    border: 1px solid #D4AF37;
+    border-left: 4px solid var(--gold);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .rec-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .rec-box p {
+    font-size: 0.9rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .platform-metrics { grid-template-columns: 1fr 1fr; }
+    .verdict-grid { grid-template-columns: 1fr; }
+    .priority-grid { grid-template-columns: 1fr; }
+    .focus-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { flex-direction: column; }
+    .hero-stat + .hero-stat::before { display: none; }
+    .two-col { grid-template-columns: 1fr; }
+    .insight-strip { grid-template-columns: 1fr; }
+    .strip-item { border-right: none; border-bottom: 1px solid #C9A84C20; }
+    .platform-hero, .google-platform-hero { padding: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-ornament"></div>
+
+  <div class="hero-eyebrow">Performance Marketing Report &nbsp;·&nbsp; February 2026</div>
+  <div class="hero-brand">Complimento</div>
+  <div class="hero-divider"></div>
+  <div class="hero-title">Ecom Jewellery &nbsp;·&nbsp; Monthly Performance Overview</div>
+  <div class="hero-period">Report Period: February 1–28, 2026</div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-val">₹5.92L</span>
+      <span class="hero-stat-label">Total Revenue</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">138</span>
+      <span class="hero-stat-label">Total Orders</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">1.64×</span>
+      <span class="hero-stat-label">Overall ROAS</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">₹4,289</span>
+      <span class="hero-stat-label">Avg. Order Value</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ EXECUTIVE SUMMARY ════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">01 &nbsp; Executive Summary</div>
+    <h2 class="section-title">February at a Glance</h2>
+    <p class="section-subtitle">Meta drove all revenue and orders. Google yielded zero conversions. Clear opportunity to improve ROAS and reallocate budget.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card gold">
+        <div class="kpi-label">Total Revenue</div>
+        <div class="kpi-value">₹5.92L</div>
+        <div class="kpi-sub">₹5,91,808 · 100% Meta</div>
+      </div>
+      <div class="kpi-card plum">
+        <div class="kpi-label">Total Orders</div>
+        <div class="kpi-value">138</div>
+        <div class="kpi-sub">All from Meta campaigns</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Overall ROAS</div>
+        <div class="kpi-value">1.64×</div>
+        <div class="kpi-sub">Target: 2.0× — room to grow</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">Total Ad Spend</div>
+        <div class="kpi-value">₹3.62L</div>
+        <div class="kpi-sub">₹3,61,661 deployed this month</div>
+      </div>
+    </div>
+
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Ad Spend</th>
+          <th>Orders</th>
+          <th>Revenue</th>
+          <th>ROAS</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="platform-name">
+              <span class="platform-dot" style="background:#1877F2"></span>
+              Meta (Facebook &amp; Instagram)
+            </span>
+          </td>
+          <td>₹3,56,246</td>
+          <td>138</td>
+          <td>₹5,91,808</td>
+          <td><span class="roas-badge roas-good">1.66×</span></td>
+          <td>Primary Revenue Driver</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="platform-name">
+              <span class="platform-dot" style="background:#EA4335"></span>
+              Google Ads
+            </span>
+          </td>
+          <td>₹5,415</td>
+          <td>0</td>
+          <td>₹0</td>
+          <td><span class="roas-badge roas-zero">0.00×</span></td>
+          <td>No direct conversions</td>
+        </tr>
+        <tr class="total-row">
+          <td><span class="platform-name">Total</span></td>
+          <td>₹3,61,661</td>
+          <td>138</td>
+          <td>₹5,91,808</td>
+          <td><span class="roas-badge roas-total">1.64×</span></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ════════════════ TARGET VS ACTUAL ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">02 &nbsp; Target vs Actual</div>
+    <h2 class="section-title">How February Measured Up</h2>
+    <p class="section-subtitle">A measured month — intentional restraint on spend, with focused gaps to close on revenue and ROAS.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);margin-bottom:3rem;">
+
+      <div style="background:var(--white);padding:2.5rem 2rem;position:relative;overflow:hidden;">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Revenue vs Target</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--red);line-height:1;margin-bottom:0.4rem;">−14.7%</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem;">Fell short of revenue target</div>
+        <div style="height:4px;background:var(--cream-mid);border-radius:2px;margin-bottom:0.5rem;">
+          <div style="height:4px;background:var(--red);border-radius:2px;width:85.3%;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted);">
+          <span>Actual</span><span>85.3% of target</span>
+        </div>
+      </div>
+
+      <div style="background:var(--white);padding:2.5rem 2rem;position:relative;overflow:hidden;">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Blended ROAS vs Target</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:#7A5A00;line-height:1;margin-bottom:0.4rem;">−3%</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem;">Missed blended ROAS target</div>
+        <div style="height:4px;background:var(--cream-mid);border-radius:2px;margin-bottom:0.5rem;">
+          <div style="height:4px;background:#C9A84C;border-radius:2px;width:97%;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--muted);">
+          <span>Actual</span><span>97% of target</span>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div style="background:var(--plum);padding:2.5rem 3rem;border-left:4px solid var(--gold);">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Context</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--white);line-height:1.7;">In February, we fell short of the revenue target by <em>14.7%</em> and missed the blended ROAS target by <em>3%</em>. Along with that, we intentionally did not scale up significantly — spending only what was projected, keeping budget discipline intact while the strategy matures.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ CAMPAIGN PERFORMANCE ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">03 &nbsp; Campaign Performance</div>
+    <h2 class="section-title">Pre vs Post Cancellations</h2>
+    <p class="section-subtitle">February campaign breakdown by type — BAU vs Testing — before and after cancellation adjustments.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;">
+
+      <!-- PRE-CANCELLATIONS -->
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;">Pre-Cancellations</div>
+        <table class="platform-table" style="margin-bottom:0;">
+          <thead>
+            <tr>
+              <th>Campaign Type</th>
+              <th>Spends</th>
+              <th>Orders</th>
+              <th>Revenue</th>
+              <th>ROAS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="platform-name"><span class="platform-dot" style="background:var(--plum)"></span>BAU</span></td>
+              <td>₹3,31,224</td>
+              <td>131</td>
+              <td>₹5,56,554</td>
+              <td><span class="roas-badge roas-good">1.68×</span></td>
+            </tr>
+            <tr>
+              <td><span class="platform-name"><span class="platform-dot" style="background:var(--gold)"></span>Testing</span></td>
+              <td>₹30,437</td>
+              <td>7</td>
+              <td>₹35,254</td>
+              <td><span class="roas-badge" style="background:#FEF6E0;color:#7A5A00;">1.16×</span></td>
+            </tr>
+            <tr class="total-row">
+              <td><span class="platform-name">Total</span></td>
+              <td>₹3,61,661</td>
+              <td>138</td>
+              <td>₹5,91,808</td>
+              <td><span class="roas-badge roas-total">1.64×</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- POST-CANCELLATIONS -->
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;">Post-Cancellations</div>
+        <table class="platform-table" style="margin-bottom:0;">
+          <thead>
+            <tr>
+              <th>Campaign Type</th>
+              <th>Spends</th>
+              <th>Orders</th>
+              <th>Revenue</th>
+              <th>ROAS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="platform-name"><span class="platform-dot" style="background:var(--plum)"></span>BAU</span></td>
+              <td>₹3,31,224</td>
+              <td>131</td>
+              <td>₹5,10,193</td>
+              <td><span class="roas-badge roas-good">1.54×</span></td>
+            </tr>
+            <tr>
+              <td><span class="platform-name"><span class="platform-dot" style="background:var(--gold)"></span>Testing</span></td>
+              <td>₹30,437</td>
+              <td>7</td>
+              <td>₹32,317</td>
+              <td><span class="roas-badge" style="background:#FEF6E0;color:#7A5A00;">1.06×</span></td>
+            </tr>
+            <tr class="total-row">
+              <td><span class="platform-name">Total</span></td>
+              <td>₹3,61,661</td>
+              <td>138</td>
+              <td>₹5,42,510</td>
+              <td><span class="roas-badge roas-total">1.50×</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+
+    <!-- LOW RETURN RATE HIGHLIGHT -->
+    <div style="background:var(--plum);padding:3rem 4rem;margin-bottom:2rem;display:flex;align-items:center;gap:4rem;border-left:4px solid var(--gold);">
+      <div style="flex-shrink:0;text-align:center;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:600;color:var(--gold-bright);display:block;line-height:1;">8.33%</span>
+        <span style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#7A6A5A;margin-top:0.5rem;display:block;">Return Rate</span>
+      </div>
+      <div style="width:1px;height:80px;background:#C9A84C25;flex-shrink:0;"></div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">🏆 &nbsp; Achievement</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--white);line-height:1.3;margin-bottom:0.8rem;">February recorded one of the lowest return rates in recent months</div>
+        <div style="font-size:0.88rem;color:#9A8A7A;line-height:1.7;">An 8.33% return rate is a strong signal of product-market fit, accurate creative representation, and healthy customer satisfaction — keeping net revenue solid and operational costs low.</div>
+      </div>
+    </div>
+
+    <!-- FOOTNOTE -->
+    <p style="font-size:0.78rem;color:var(--muted);font-style:italic;border-left:3px solid var(--cream-mid);padding-left:1rem;">
+      * Numbers may show slight discrepancies when compared with Shopify, as cancellations have been proportionally deducted i.e. 8.33%.
+    </p>
+
+  </div>
+</section>
+
+<!-- ════════════════ PLATFORM ANALYSIS ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">04 &nbsp; Platform Analysis</div>
+    <h2 class="section-title">Meta &amp; Google — What Happened</h2>
+    <p class="section-subtitle">A detailed account of campaign behaviour, optimisations, and learnings across both platforms in February.</p>
+
+    <!-- META -->
+    <div style="margin-bottom:3rem;">
+      <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;">
+        <div style="width:36px;height:36px;background:#1877F2;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="color:white;font-weight:700;font-size:0.9rem;">M</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--plum);">Meta</h3>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);">
+
+        <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">In the initial week, we observed strong performance; however, it gradually started declining from 15th February onwards.</p>
+        </div>
+
+        <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Two of our campaigns suddenly experienced a drop in performance mid-month. Despite multiple optimisations and testing new ads, they were unable to regain their previous momentum.</p>
+        </div>
+
+        <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">As part of the optimisation process, we paused one of the long-performing campaigns and consolidated the structure into two campaigns focused only on <strong>Sehr</strong> and <strong>Nita Ambani collections</strong>, while introducing newer creatives to regain momentum.</p>
+        </div>
+
+        <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Along with this consolidation, we began testing new content strategy creatives. We initially saw traction with the <strong>celebrity-led video</strong> and the <strong>"Hum Fraud Hain" founder-led video</strong>. These are now being moved into BAU for March, while new creatives will be introduced for further testing.</p>
+        </div>
+
+        <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Since we began testing new content strategies in the second half of the month, we were unable to fully utilise the testing budget and ended up spending only <strong>₹30K on testing</strong>.</p>
+        </div>
+
+        <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Toward the end of February and early March, we have started seeing a gradual uptick in performance for both <strong>Sehr</strong> and <strong>Nita Ambani collections</strong>.</p>
+        </div>
+
+        <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">The major drop in the funnel was driven by an <strong>increase in CPC</strong> and a <strong>decline in CTR</strong>, which we have now identified and are actively working to improve.</p>
+        </div>
+
+        <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">ROAS was also impacted due to a slight drop in AOV, primarily because the number of <strong>Nita Ambani necklaces sold decreased</strong>, bringing the overall average down.</p>
+        </div>
+
+        <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--green);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">On the positive side, we observed upward traction for two SKUs — the <strong>Ruhi Stunning Gold Chain Bracelet</strong> and the <strong>3-Layered Ruhi Necklace</strong>.</p>
+        </div>
+
+        <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+          <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+          <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">We also noticed that new creatives redirecting to the Sehr collection page were leading customers to purchase lower AOV products, so we <strong>shifted the destination back to the Sehr 7-layer product page</strong> to maintain stronger AOV performance.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GOOGLE -->
+    <div>
+      <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;">
+        <div style="width:36px;height:36px;background:#EA4335;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="color:white;font-weight:700;font-size:0.9rem;">G</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--plum);">Google</h3>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--cream-mid);padding:1.8rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:#EA4335;border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">On Google, we are continuing with a very small budget of <strong>₹300 per day</strong>, primarily to protect brand searches from users who look us up on Google after seeing our ads on Meta.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ TOP SELLING PRODUCTS ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">05 &nbsp; Top Selling Products</div>
+    <h2 class="section-title">Revenue by Product</h2>
+    <p class="section-subtitle">Top 5 products by total sales revenue in February 2026.</p>
+
+    <div style="background:var(--white);border:1px solid var(--cream-mid);padding:3rem;">
+
+      <!-- Product 1 -->
+      <div style="margin-bottom:2.2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;">
+          <span style="font-size:0.9rem;color:var(--ink);font-weight:500;">Ruhi 7-Layer Gold Necklace</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--plum);">₹2.3L</span>
+        </div>
+        <div style="height:36px;background:var(--cream-mid);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:100%;background:linear-gradient(90deg,var(--plum-mid),var(--plum));border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div style="margin-bottom:2.2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;">
+          <span style="font-size:0.9rem;color:var(--ink);font-weight:500;">Nita Ambani CZ Diamond Necklace</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--plum);">₹1L</span>
+        </div>
+        <div style="height:36px;background:var(--cream-mid);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:43.5%;background:linear-gradient(90deg,var(--plum-mid),var(--plum));border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div style="margin-bottom:2.2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;">
+          <span style="font-size:0.9rem;color:var(--ink);font-weight:500;">Sehr Choker Gold Brass Necklace</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--plum);">₹48.1K</span>
+        </div>
+        <div style="height:36px;background:var(--cream-mid);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:20.9%;background:linear-gradient(90deg,var(--plum-mid),var(--plum));border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div style="margin-bottom:2.2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;">
+          <span style="font-size:0.9rem;color:var(--ink);font-weight:500;">Ruhi Stunning Gold Chain Bracelet</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--plum);">₹19.4K</span>
+        </div>
+        <div style="height:36px;background:var(--cream-mid);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:8.4%;background:linear-gradient(90deg,var(--gold),var(--gold-bright));border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div style="margin-bottom:2.2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;">
+          <span style="font-size:0.9rem;color:var(--ink);font-weight:500;">3-Layered Ruhi Necklace</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--plum);">₹17.6K</span>
+        </div>
+        <div style="height:36px;background:var(--cream-mid);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:7.7%;background:linear-gradient(90deg,var(--gold),var(--gold-bright));border-radius:2px;"></div>
+        </div>
+      </div>
+
+      <!-- Others -->
+      <div style="margin-bottom:0;padding-top:1.5rem;border-top:1px dashed var(--cream-mid);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.6rem;">
+          <span style="font-size:0.9rem;color:var(--muted);font-weight:500;font-style:italic;">Others</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--muted);">₹1.32L</span>
+        </div>
+        <div style="height:36px;background:var(--cream-mid);border-radius:2px;overflow:hidden;">
+          <div style="height:100%;width:57.4%;background:#D4C9B5;border-radius:2px;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Insight -->
+    <div style="margin-top:1.5rem;background:var(--plum);padding:1.8rem 2.5rem;border-left:4px solid var(--gold);display:flex;align-items:center;gap:2rem;">
+      <div style="flex-shrink:0;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:var(--gold-bright);line-height:1;display:block;">77%</span>
+        <span style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#7A6A5A;">Top 2 Share</span>
+      </div>
+      <div style="width:1px;height:50px;background:#C9A84C25;flex-shrink:0;"></div>
+      <p style="font-size:0.88rem;color:#9A8A7A;line-height:1.7;">The <strong style="color:var(--gold-pale);">Ruhi 7-Layer Gold Necklace</strong> dominates with ₹2.3L — more than double the second-best seller. Together, the Ruhi and Nita Ambani collections account for ~77% of top-5 revenue. The remaining ₹1.32L is spread across all other products.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ REVENUE BY STATE ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">06 &nbsp; Geographic Performance</div>
+    <h2 class="section-title">Revenue by State</h2>
+    <p class="section-subtitle">Top 7 states driving revenue in February 2026, out of total ₹5.92L.</p>
+
+    <div style="background:var(--white);border:1px solid var(--cream-mid);padding:3rem;display:flex;align-items:center;gap:5rem;">
+
+      <!-- DONUT CHART -->
+      <div style="flex-shrink:0;position:relative;width:280px;height:280px;">
+        <svg viewBox="0 0 280 280" width="280" height="280" style="transform:rotate(-90deg);">
+          <!-- Maharashtra 21.96% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#2D0A2E" stroke-width="36"
+            stroke-dasharray="138.0 492.0" stroke-dashoffset="0"/>
+          <!-- Delhi 12.26% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#4A1942" stroke-width="36"
+            stroke-dasharray="77.0 553.0" stroke-dashoffset="-138.0"/>
+          <!-- Tamil Nadu 9.95% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#C9A84C" stroke-width="36"
+            stroke-dasharray="62.5 567.5" stroke-dashoffset="-215.0"/>
+          <!-- Telangana 7.23% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#E8C96A" stroke-width="36"
+            stroke-dasharray="45.4 584.6" stroke-dashoffset="-277.5"/>
+          <!-- Haryana 7.21% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#6B2D68" stroke-width="36"
+            stroke-dasharray="45.3 584.7" stroke-dashoffset="-322.9"/>
+          <!-- Gujarat 5.32% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#9A6A40" stroke-width="36"
+            stroke-dasharray="33.4 596.6" stroke-dashoffset="-368.2"/>
+          <!-- West Bengal 4.97% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#C8A882" stroke-width="36"
+            stroke-dasharray="31.2 598.8" stroke-dashoffset="-401.6"/>
+          <!-- Others 31.1% -->
+          <circle cx="140" cy="140" r="100" fill="none" stroke="#E8DFD0" stroke-width="36"
+            stroke-dasharray="195.4 434.6" stroke-dashoffset="-432.8"/>
+        </svg>
+        <!-- Centre label -->
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--plum);line-height:1;">₹5.92L</span>
+          <span style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;">Total Revenue</span>
+        </div>
+      </div>
+
+      <!-- LEGEND -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:0.9rem;">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#2D0A2E;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">Maharashtra</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:100%;background:#2D0A2E;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹1.3L</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#4A1942;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">Delhi</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:55.8%;background:#4A1942;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹72.6K</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#C9A84C;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">Tamil Nadu</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:45.3%;background:#C9A84C;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹58.9K</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#E8C96A;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">Telangana</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:32.9%;background:#E8C96A;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹42.8K</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#6B2D68;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">Haryana</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:32.8%;background:#6B2D68;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹42.7K</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#9A6A40;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">Gujarat</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:24.2%;background:#9A6A40;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹31.5K</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#C8A882;flex-shrink:0;"></div>
+            <span style="font-size:0.9rem;color:var(--ink);">West Bengal</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:22.6%;background:#C8A882;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--plum);min-width:4rem;text-align:right;">₹29.4K</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.6rem;border-top:1px dashed var(--cream-mid);">
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#E8DFD0;flex-shrink:0;border:1px solid #D4C9B5;"></div>
+            <span style="font-size:0.9rem;color:var(--muted);font-style:italic;">Others</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div style="height:6px;width:120px;background:var(--cream-mid);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:100%;background:#D4C9B5;border-radius:3px;"></div>
+            </div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--muted);min-width:4rem;text-align:right;">₹2.14L</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ SOCIAL MEDIA BOOSTING ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">07 &nbsp; Social Media Boosting</div>
+    <h2 class="section-title">Activity Insights</h2>
+    <p class="section-subtitle">Instagram Reels and carousel promotion performance for February 2026.</p>
+
+    <!-- 3 stat cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);margin-bottom:2.5rem;">
+
+      <div style="background:var(--white);padding:2.5rem 2rem;">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Total Boosting Spend</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--plum);line-height:1;margin-bottom:0.5rem;">₹26.6K</div>
+        <div style="font-size:0.82rem;color:var(--muted);">Invested across Reels &amp; carousel posts</div>
+      </div>
+
+      <div style="background:var(--white);padding:2.5rem 2rem;">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">New Users Reached</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--gold);line-height:1;margin-bottom:0.5rem;">32.0L</div>
+        <div style="font-size:0.82rem;color:var(--muted);">3,203,748 users across feeds</div>
+      </div>
+
+      <div style="background:var(--white);padding:2.5rem 2rem;">
+        <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Total Video Views</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--green);line-height:1;margin-bottom:0.5rem;">12.5L</div>
+        <div style="font-size:0.82rem;color:var(--muted);">1,248,152 total video views generated</div>
+      </div>
+
+    </div>
+
+    <!-- Narrative -->
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);margin-bottom:2.5rem;">
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">We invested approximately <strong>₹26.6K</strong> last month to promote different categories of Instagram Reels and carousel posts with the objective of increasing views, enhancing brand visibility, building trust and credibility, and driving engagement.</p>
+      </div>
+
+      <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">The promoted videos and carousels helped the account reach <strong>3,203,748 new users</strong>, appearing across their feeds, and generated <strong>1,248,152 total video views</strong>.</p>
+      </div>
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--green);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">The campaign was strategically targeted using <strong>multiple high-jewellery-related interests</strong>, ensuring visibility among the most relevant audience segments while minimising irrelevant awareness reach.</p>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<!-- ════════════════ MARCH PROJECTIONS ════════════════ -->
+<section class="section" style="border-top: 1px solid var(--cream-mid);">
+  <div class="container">
+    <div class="section-label">08 &nbsp; Looking Ahead</div>
+    <h2 class="section-title">Projected March Numbers</h2>
+    <p class="section-subtitle">Planned spend, orders, revenue and ROAS targets across BAU and Testing campaigns for March 2026.</p>
+
+    <!-- Projections table -->
+    <table class="platform-table" style="margin-bottom:3rem;">
+      <thead>
+        <tr>
+          <th>Campaign Type</th>
+          <th>Spends</th>
+          <th>Orders</th>
+          <th>Revenue</th>
+          <th>ROAS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="platform-name"><span class="platform-dot" style="background:var(--plum)"></span>BAU</span></td>
+          <td>₹3,00,006</td>
+          <td>133</td>
+          <td>₹5,86,483</td>
+          <td><span class="roas-badge roas-good">1.95×</span></td>
+        </tr>
+        <tr>
+          <td><span class="platform-name"><span class="platform-dot" style="background:var(--gold)"></span>Testing</span></td>
+          <td>₹1,00,800</td>
+          <td>27</td>
+          <td>₹1,20,880</td>
+          <td><span class="roas-badge" style="background:#FEF6E0;color:#7A5A00;">1.20×</span></td>
+        </tr>
+        <tr class="total-row">
+          <td><span class="platform-name">Total</span></td>
+          <td>₹4,00,806</td>
+          <td>160</td>
+          <td>₹7,07,363</td>
+          <td><span class="roas-badge roas-total">1.76×</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Notes for March -->
+    <div class="section-label">Notes for March</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--plum);margin-bottom:2rem;">Strategic Priorities &amp; Action Items</h3>
+
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--cream-mid);border:1px solid var(--cream-mid);">
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Focus more on <strong>unusual content strategies</strong> (as discussed in February) that create strong recall and remembrance in customers' minds.</p>
+      </div>
+
+      <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Work towards developing more <strong>repeat buyers</strong>.</p>
+      </div>
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Continue pushing marketing messages through <strong>Engage360</strong> during festive or special occasions with different messaging angles and product highlights.</p>
+      </div>
+
+      <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">If possible, start <strong>manually reviewing abandoned carts</strong> to identify recovery opportunities.</p>
+      </div>
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;"><strong>Founders should become more camera- and content-friendly</strong> to support storytelling and brand connection.</p>
+      </div>
+
+      <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Begin sharing more <strong>founder-led and UGC-led content</strong>, with a minimum of two pieces from each category every week, ensuring timelines are not missed.</p>
+      </div>
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Increase the production of <strong>UGC content</strong> to strengthen social proof.</p>
+      </div>
+
+      <div style="background:#FAF8F5;padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--green);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">New summer collection products — <strong>Kruti Arts</strong> and <strong>Raas Leela</strong> — will be rigorously tested this month.</p>
+      </div>
+
+      <div style="background:var(--white);padding:1.4rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:6px;height:6px;background:var(--green);border-radius:50%;margin-top:0.55rem;flex-shrink:0;"></div>
+        <p style="font-size:0.9rem;color:var(--ink);line-height:1.7;">Additionally, we will test <strong>Click-to-WhatsApp campaigns</strong> to evaluate whether we can generate a meaningful number of orders through this channel.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer">
+  <div class="footer-brand">COMPLIMENTO</div>
+  <div class="footer-meta">February 2026 Performance Marketing Report &nbsp;·&nbsp; Prepared by Performance Marketing Team &nbsp;·&nbsp; Next Review: April 2026</div>
+  <div class="footer-meta" style="margin-top:0.5rem;">This report is confidential and intended for internal use only.</div>
+</footer>
+
+</body>
+</html>
+
