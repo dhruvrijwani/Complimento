@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complimento - January 2026 Performance Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D4AF37;
+            --primary-dark: #B8941F;
+            --secondary: #1a1a1a;
+            --accent: #C9A961;
+            --bg: #FDFCF9;
+            --text: #2C2C2C;
+            --text-light: #6B6B6B;
+            --success: #2D7A4F;
+            --warning: #D97706;
+            --danger: #DC2626;
+            --card-bg: #FFFFFF;
+            --border: #E8E5DF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-top: 40px;
+        }
+        
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .report-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .report-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .brand-tagline {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-style: italic;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2d2d2d 100%);
+            color: white;
+            padding: 48px;
+            border-radius: 20px;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+        
+        .executive-summary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .executive-summary h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .summary-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metric-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
+        .metric-subtitle {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 64px;
+            animation: fadeInUp 1s ease-out both;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 16px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+        }
+        
+        /* Platform Cards */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .platform-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .platform-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: white;
+        }
+        
+        .platform-meta { background: linear-gradient(135deg, #0084FF, #00A3FF); }
+        .platform-google { background: linear-gradient(135deg, #4285F4, #34A853); }
+        
+        .platform-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--secondary);
+        }
+        
+        .platform-desc {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .platform-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .platform-metric {
+            text-align: center;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+        
+        .platform-metric-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        
+        .platform-metric-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-primary {
+            background: rgba(212,175,55,0.15);
+            color: var(--primary-dark);
+        }
+        
+        .status-testing {
+            background: rgba(217,119,6,0.15);
+            color: var(--warning);
+        }
+        
+        /* Campaign Analysis */
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .campaign-card {
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            position: relative;
+        }
+        
+        .campaign-type {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+        
+        .campaign-performance {
+            display: grid;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .performance-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .performance-row:last-child {
+            border-bottom: none;
+        }
+        
+        .performance-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .performance-value {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .highlight-card {
+            background: var(--card-bg);
+            padding: 28px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        
+        .highlight-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+        
+        .highlight-text {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .data-table thead {
+            background: linear-gradient(135deg, var(--secondary), #2d2d2d);
+            color: white;
+        }
+        
+        .data-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .data-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tbody tr:hover {
+            background: var(--bg);
+        }
+        
+        .data-table .total-row {
+            background: rgba(212,175,55,0.05);
+            font-weight: 700;
+        }
+        
+        /* Insights */
+        .insight-box {
+            background: linear-gradient(135deg, #FEF7E6, #FDF5E0);
+            padding: 32px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            margin: 32px 0;
+        }
+        
+        .insight-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .insight-content {
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        /* Action Items */
+        .action-list {
+            list-style: none;
+            counter-reset: action-counter;
+        }
+        
+        .action-item {
+            counter-increment: action-counter;
+            padding: 20px;
+            margin-bottom: 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            position: relative;
+            padding-left: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-item:hover {
+            border-color: var(--primary);
+            transform: translateX(8px);
+        }
+        
+        .action-item::before {
+            content: counter(action-counter);
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+        
+        .action-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        
+        .action-description {
+            color: var(--text-light);
+            font-size: 0.9375rem;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin: 24px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            transition: width 1s ease-out;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 48px 24px;
+            margin-top: 80px;
+            border-top: 2px solid var(--border);
+        }
+        
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        
+        .footer-text {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            .brand-name {
+                font-size: 2rem;
+            }
+            
+            .report-title {
+                font-size: 1.75rem;
+            }
+            
+            .executive-summary {
+                padding: 32px 24px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform-grid,
+            .campaign-grid,
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                font-size: 0.875rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 12px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .executive-summary::before {
+                display: none;
+            }
+            
+            .platform-card:hover,
+            .campaign-card:hover,
+            .highlight-card:hover,
+            .action-item:hover {
+                transform: none;
+            }
+        }
+        .campaign-image {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* 1:1 square */
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            }
+
+            .campaign-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="brand-name">Complimento</h1>
+            <h2 class="report-title">January 2026 Performance Report</h2>
+            <p class="report-subtitle">Report Period: January 1-31, 2026</p>
+            <p class="brand-tagline">E-Commerce Jewellery Brand</p>
+        </header>
+        
+        <!-- Executive Summary -->
+        <section class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p class="summary-text">
+                January delivered solid performance with ₹7.01L in revenue across 158 orders, achieving a 1.64x ROAS. Meta campaigns dominated as the primary revenue driver with 100% of orders. A major operational milestone was achieved with a record-low 7.92% cancellation rate, demonstrating improved logistics and customer experience. BAU campaigns excelled with 2.02x ROAS, while Testing campaigns at 1.14x ROAS present opportunities for optimization.
+            </p>
+            
+            <p class="summary-text" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.08); border-radius: 12px; border-left: 3px solid var(--primary);">
+                In January, we exceeded the revenue target by achieving 103.26%, generating ₹7,01,462 in revenue. However, this was accompanied by a 15% overspend, and ROAS fell short of the target by 10%, closing at 1.64x.
+            </p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">₹7.01L</div>
+                    <div class="metric-subtitle">Post-cancellations</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Total Orders</div>
+                    <div class="metric-value">158</div>
+                    <div class="metric-subtitle">100% from Meta</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Overall ROAS</div>
+                    <div class="metric-value">1.64x</div>
+                    <div class="metric-subtitle">Room for growth</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Cancellation Rate</div>
+                    <div class="metric-value">7.92%</div>
+                    <div class="metric-subtitle">Record Low ✓</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Average AOV</div>
+                    <div class="metric-value">₹4,439</div>
+                    <div class="metric-subtitle">Strong order value</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Key Highlights -->
+        <section class="section">
+            <h3 class="section-title">Key Highlights</h3>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🎯</div>
+                    <div class="highlight-title">BAU Campaigns Excel</div>
+                    <div class="highlight-text">BAU campaigns delivered exceptional 2.02x ROAS with 136 orders, proving to be the most reliable revenue driver</div>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">✅</div>
+                    <div class="highlight-title">Record-Low Cancellation Rate</div>
+                    <div class="highlight-text">Achieved lowest-ever 7.92% cancellation rate, reflecting improved operational efficiency and enhanced customer satisfaction</div>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">📉</div>
+                    <div class="highlight-title">Testing Underperformance</div>
+                    <div class="highlight-text">Testing campaigns at 1.14x ROAS fell short of profitability targets, indicating need for strategic refinement</div>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">💎</div>
+                    <div class="highlight-title">High AOV Achievement</div>
+                    <div class="highlight-text">₹4,439 average order value demonstrates strong product positioning and customer purchasing power</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Performance Overview -->
+        <section class="section">
+            <h3 class="section-title">Performance Overview</h3>
+            <p class="section-subtitle">Comprehensive breakdown of January's marketing performance across all platforms</p>
+            
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon platform-meta">M</div>
+                    <div class="platform-name">Meta</div>
+                    <div class="platform-desc">Facebook & Instagram Ads</div>
+                    <div class="platform-metrics">
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">Ad Spend</div>
+                            <div class="platform-metric-value">₹4.20L</div>
+                        </div>
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">Orders</div>
+                            <div class="platform-metric-value">158</div>
+                        </div>
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">Revenue</div>
+                            <div class="platform-metric-value">₹7.01L</div>
+                        </div>
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">ROAS</div>
+                            <div class="platform-metric-value">1.67x</div>
+                        </div>
+                    </div>
+                    <span class="status-badge status-primary">Primary Revenue Driver</span>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon platform-google">G</div>
+                    <div class="platform-name">Google</div>
+                    <div class="platform-desc">Search & Display Ads</div>
+                    <div class="platform-metrics">
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">Ad Spend</div>
+                            <div class="platform-metric-value">₹9.1K</div>
+                        </div>
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">Orders</div>
+                            <div class="platform-metric-value">0</div>
+                        </div>
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">Revenue</div>
+                            <div class="platform-metric-value">₹0</div>
+                        </div>
+                        <div class="platform-metric">
+                            <div class="platform-metric-label">ROAS</div>
+                            <div class="platform-metric-value">0.00x</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Spends</th>
+                            <th>Orders</th>
+                            <th>Revenue</th>
+                            <th>ROAS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Meta</strong></td>
+                            <td>₹4,19,897</td>
+                            <td>158</td>
+                            <td>₹7,01,462</td>
+                            <td><strong>1.67x</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google</strong></td>
+                            <td>₹9,119</td>
+                            <td>0</td>
+                            <td>₹0</td>
+                            <td>0.00x</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total</strong></td>
+                            <td><strong>₹4,29,016</strong></td>
+                            <td><strong>158</strong></td>
+                            <td><strong>₹7,01,462</strong></td>
+                            <td><strong>1.64x</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Campaign Analysis -->
+        <section class="section">
+            <h3 class="section-title">Campaign Type Analysis</h3>
+            <p class="section-subtitle">Pre-cancellation performance breakdown by campaign structure</p>
+            
+            <div class="campaign-grid">
+                <div class="campaign-card">
+                    <div class="campaign-type">BAU Campaigns</div>
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Spends</span>
+                            <span class="performance-value">₹3,11,382</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Orders</span>
+                            <span class="performance-value">136</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Revenue</span>
+                            <span class="performance-value">₹6,28,496</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">ROAS</span>
+                            <span class="performance-value" style="color: var(--success);">2.02x</span>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Revenue Contribution</span>
+                            <span><strong>82.5%</strong></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 82.5%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-card">
+                    <div class="campaign-type">Testing Campaigns</div>
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Spends</span>
+                            <span class="performance-value">₹1,17,310</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Orders</span>
+                            <span class="performance-value">22</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Revenue</span>
+                            <span class="performance-value">₹1,33,287</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">ROAS</span>
+                            <span class="performance-value" style="color: var(--warning);">1.14x</span>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Revenue Contribution</span>
+                            <span><strong>17.5%</strong></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 17.5%; background: linear-gradient(90deg, var(--warning), #FBBF24);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Campaign Type</th>
+                            <th>Spends</th>
+                            <th>Orders</th>
+                            <th>Revenue (Pre-Cancel)</th>
+                            <th>ROAS</th>
+                            <th>Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BAU</strong></td>
+                            <td>₹3,11,382</td>
+                            <td>136</td>
+                            <td>₹6,28,496</td>
+                            <td style="color: var(--success);"><strong>2.02x</strong></td>
+                            <td>82.5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Testing</strong></td>
+                            <td>₹1,17,310</td>
+                            <td>22</td>
+                            <td>₹1,33,287</td>
+                            <td style="color: var(--warning);">1.14x</td>
+                            <td>17.5%</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total</strong></td>
+                            <td><strong>₹4,28,692</strong></td>
+                            <td><strong>158</strong></td>
+                            <td><strong>₹7,61,783</strong></td>
+                            <td><strong>1.78x</strong></td>
+                            <td>100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Cancellation Impact Analysis -->
+        <section class="section">
+            <h3 class="section-title">Operational Excellence: Cancellation Rate Achievement</h3>
+            <p class="section-subtitle">Record-low cancellation rate demonstrates improved customer experience and logistics</p>
+            
+            <div class="insight-box">
+                <div class="insight-title">
+                    <span>✅</span>
+                    <span>Major Milestone: Lowest Cancellation Rate Achieved</span>
+                </div>
+                <div class="insight-content">
+                    <p><strong>7.92% cancellation rate represents the lowest rate ever achieved</strong>, demonstrating significant improvements in customer experience, product expectations, and logistics operations. While this resulted in ₹60,321 in cancellations, this rate is substantially better than previous months, indicating positive operational trends.</p>
+                    <br>
+                    <p><strong>Revenue Impact:</strong></p>
+                    <ul style="margin-left: 24px; margin-top: 8px;">
+                        <li>Pre-cancellation revenue: ₹7,61,783</li>
+                        <li>Cancellations: ₹60,321 (7.92% - Record Low)</li>
+                        <li>Final revenue: ₹7,01,462</li>
+                        <li>Pre-cancellation ROAS: 1.78x → Post-cancellation: 1.64x</li>
+                    </ul>
+                    <br>
+                    <p>This achievement validates our operational improvements and sets a new baseline for excellence. Continued focus on maintaining this low rate while driving further improvements will enhance overall profitability.</p>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px;">
+                <div class="campaign-card">
+                    <h4 style="font-size: 1.125rem; margin-bottom: 16px; color: var(--secondary);">Pre-Cancellation</h4>
+                    <div class="performance-row">
+                        <span class="performance-label">Revenue</span>
+                        <span class="performance-value">₹7,61,783</span>
+                    </div>
+                    <div class="performance-row">
+                        <span class="performance-label">ROAS</span>
+                        <span class="performance-value" style="color: var(--success);">1.78x</span>
+                    </div>
+                </div>
+                
+                <div class="campaign-card" style="border-color: var(--danger);">
+                    <h4 style="font-size: 1.125rem; margin-bottom: 16px; color: var(--danger);">Cancellations</h4>
+                    <div class="performance-row">
+                        <span class="performance-label">Lost Revenue</span>
+                        <span class="performance-value" style="color: var(--danger);">-₹60,321</span>
+                    </div>
+                    <div class="performance-row">
+                        <span class="performance-label">Rate</span>
+                        <span class="performance-value" style="color: var(--danger);">7.92%</span>
+                    </div>
+                </div>
+                
+                <div class="campaign-card">
+                    <h4 style="font-size: 1.125rem; margin-bottom: 16px; color: var(--secondary);">Post-Cancellation</h4>
+                    <div class="performance-row">
+                        <span class="performance-label">Final Revenue</span>
+                        <span class="performance-value">₹7,01,462</span>
+                    </div>
+                    <div class="performance-row">
+                        <span class="performance-label">Actual ROAS</span>
+                        <span class="performance-value" style="color: var(--warning);">1.64x</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Meta Platform Deep Dive -->
+        <section class="section">
+            <h3 class="section-title">Meta Platform Deep Dive</h3>
+            <p class="section-subtitle">Detailed analysis of campaign strategies, product performance, and optimization efforts</p>
+            
+            <div class="insight-box" style="background: linear-gradient(135deg, #E8F4FD, #F0F8FF); border-left-color: #0084FF;">
+                <div class="insight-title">
+                    <span>📈</span>
+                    <span>Performance Evolution & Strategic Pivots</span>
+                </div>
+                <div class="insight-content">
+                    <p><strong>Initial Performance Trend:</strong> The initial week saw good performance, but it gradually slowed down as the month progressed, requiring strategic interventions.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin-bottom: 20px;">Product Performance & Optimization Journey</h4>
+                
+                <div class="campaign-card" style="margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem;">👗</span>
+                        <h5 style="font-size: 1.125rem; font-weight: 700; color: var(--secondary); margin: 0;">Neeta Ambani Necklace - Revival Story</h5>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--text);">
+                            <strong>Challenge:</strong> One of our top-performing winner products had been consistently declining in performance by the end of December, recording 0 orders till around 70% of the month
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--text);">
+                            <strong>Strategy:</strong> Paused non-performing campaigns and started testing with past high-performing audiences using new creatives alongside proven winner creatives
+                        </li>
+                        <li style="padding: 12px 0; color: var(--text);">
+                            <strong>Result:</strong> Successfully revived the product starting with slower traction, then gradually built up good performance with better CAC and ROAS
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="campaign-card" style="margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem;">🔍</span>
+                        <h5 style="font-size: 1.125rem; font-weight: 700; color: var(--secondary); margin: 0;">New Product Testing Challenges</h5>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--text);">
+                            <strong>Parallel Testing:</strong> Along with Nita Ambani testing, new product finding testing was live but couldn't identify any winners
+                        </li>
+                        <li style="padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--text);">
+                            <strong>Kundan Green Pearl Choker:</strong> Best selling among new products but consistently failed to meet benchmark metrics for CAC and ROAS, leading to pause
+                        </li>
+                        <li style="padding: 12px 0; color: var(--text);">
+                            <strong>Outcome:</strong> After multiple optimizations with no products gaining good traction, testing campaigns were paused to focus resources on proven winners
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="campaign-card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem;">🎯</span>
+                        <h5 style="font-size: 1.125rem; font-weight: 700; color: var(--secondary); margin: 0;">Strategic Consolidation Decision</h5>
+                    </div>
+                    <p style="color: var(--text); line-height: 1.7; margin-bottom: 12px;">
+                        By the initial part of last week, we decided to consolidate all testings and avoid thin budget splitting across different campaigns. Focus shifted to reviving the Nita Ambani necklace winner product to ensure we don't rely on just 1 winner product (Sehr Ruhi 7 Layer Necklace) and to avoid huge inventory blockage for Nita Ambani necklace.
+                    </p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin-bottom: 20px;">Creative Strategy & Campaign Innovations</h4>
+                
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🎬</div>
+                        <div class="highlight-title">Voiceover Creatives</div>
+                        <div class="highlight-text">Added voiceover concept in creatives which is progressing well with the development of data, showing promising engagement patterns</div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🔄</div>
+                        <div class="highlight-title">Retargeting Campaign</div>
+                        <div class="highlight-text">Launched newer retargeting creatives communicating "back in stock" to inspire re-purchases, seeing good uplift in the Sehr Choker piece</div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">📊</div>
+                        <div class="highlight-title">4th Week Performance Spike</div>
+                        <div class="highlight-text">Addition of new creatives in Sehr product brought a significant spike in number of orders during the final week</div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">✨</div>
+                        <div class="highlight-title">End-of-Month Success</div>
+                        <div class="highlight-text">After continuous optimizations and new angled creatives, the final week of January saw good traction spike in both performing products' campaigns</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin-bottom: 20px;">Operational Challenges & Solutions</h4>
+                
+                <div class="campaign-card" style="border-left: 4px solid var(--warning);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem;">⚠️</span>
+                        <h5 style="font-size: 1.125rem; font-weight: 700; color: var(--warning); margin: 0;">Payment Processing Issue</h5>
+                    </div>
+                    <div style="color: var(--text); line-height: 1.7;">
+                        <p style="margin-bottom: 12px;">
+                            <strong>Challenge:</strong> 1.5 days straight pause in ads due to unavailability of funds. Auto-payment got stuck in "processing" stage and a few auto-debit transactions failed, resulting in:
+                        </p>
+                        <ul style="margin-left: 20px; margin-bottom: 12px;">
+                            <li>Almost 1.5 day revenue loss</li>
+                            <li>Next day higher ad spend needed to cover the lost spend</li>
+                            <li>Negative impact on ROAS</li>
+                        </ul>
+                        <p style="margin-top: 16px; padding: 12px; background: rgba(212,175,55,0.1); border-radius: 8px;">
+                            <strong>Solution Implemented:</strong> Decided to be cautious by maintaining available funds in the ad account always and refilling before it ends to avoid auto-debit failures
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin-bottom: 20px;">Key Performance Indicators</h4>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                    <div class="campaign-card" style="text-align: center;">
+                        <div style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Prepaid Orders</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); font-family: 'Playfair Display', serif; margin-bottom: 8px;">35%</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Of total orders received</div>
+                    </div>
+                    
+                    <div class="campaign-card" style="text-align: center;">
+                        <div style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Cancellations</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--success); font-family: 'Playfair Display', serif; margin-bottom: 8px;">₹60.3K</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Lowest figures to date (7.92%)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Top-Performing Creatives -->
+        <section class="section">
+            <h3 class="section-title">Top-Performing Creatives</h3>
+            <p class="section-subtitle">Best-performing video creatives driving conversions in January</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                <!-- Creative 1 -->
+                <div class="campaign-card" style="border-top: 4px solid var(--primary);">
+                    <div class="campaign-image">
+                        <img
+                            src="/jan26/image (54).png"
+                            alt="Ruhi 7 Layer Necklace Video"
+                        />
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 1.5rem;">🎬</span>
+                            <span style="padding: 4px 10px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Top Performer</span>
+                        </div>
+                        <h4 style="font-size: 1.125rem; font-weight: 700; color: var(--secondary); margin: 0; line-height: 1.4;">
+                            Ruhi 7 Layer Necklace Video
+                        </h4>
+                    </div>
+                    
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Spend</span>
+                            <span class="performance-value">₹79,365</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Orders</span>
+                            <span class="performance-value">36</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">ROAS</span>
+                            <span class="performance-value" style="color: var(--success);">2.24x</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">CTR</span>
+                            <span class="performance-value" style="color: var(--primary);">3.05%</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(212,175,55,0.08); border-radius: 8px; border-left: 3px solid var(--primary);">
+                        <p style="font-size: 0.875rem; color: var(--text); margin: 0; line-height: 1.5;">
+                            <strong>Highest engagement</strong> with 3.05% CTR and strong ROAS performance
+                        </p>
+                    </div>
+                </div>
+                
+                
+                <!-- Creative 2 -->
+                <div class="campaign-card" style="border-top: 4px solid var(--accent);">
+                    <div class="campaign-image">
+                        <img
+                            src="/jan26/image (55).png"
+                            alt="Ruhi 7 Layer Necklace Video"
+                        />
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 1.5rem;">🎥</span>
+                            <span style="padding: 4px 10px; background: linear-gradient(135deg, var(--accent), #E5C76B); color: white; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Strong</span>
+                        </div>
+                        <h4 style="font-size: 1.125rem; font-weight: 700; color: var(--secondary); margin: 0; line-height: 1.4;">
+                            Ruhi 7 Layer Necklace New Shoot Video
+                        </h4>
+                    </div>
+                    
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Spend</span>
+                            <span class="performance-value">₹28,645</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Orders</span>
+                            <span class="performance-value">9</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">ROAS</span>
+                            <span class="performance-value" style="color: var(--success);">2.18x</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">CTR</span>
+                            <span class="performance-value" style="color: var(--accent);">2.8%</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(201,169,97,0.08); border-radius: 8px; border-left: 3px solid var(--accent);">
+                        <p style="font-size: 0.875rem; color: var(--text); margin: 0; line-height: 1.5;">
+                            <strong>Consistent performer</strong> with solid ROAS and good engagement
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Creative 3 -->
+                <div class="campaign-card" style="border-top: 4px solid #2D7A4F;">
+                    <div class="campaign-image">
+                        <img
+                            src="/jan26/image (56).png"
+                            alt="Ruhi 7 Layer Necklace Video"
+                        />
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 1.5rem;">🎙️</span>
+                            <span style="padding: 4px 10px; background: linear-gradient(135deg, #2D7A4F, #34A853); color: white; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Best ROAS</span>
+                        </div>
+                        <h4 style="font-size: 1.125rem; font-weight: 700; color: var(--secondary); margin: 0; line-height: 1.4;">
+                            NitaAmbani Necklace Voiceover 02 Video
+                        </h4>
+                    </div>
+                    
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Spend</span>
+                            <span class="performance-value">₹8,311</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Orders</span>
+                            <span class="performance-value">5</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">ROAS</span>
+                            <span class="performance-value" style="color: var(--success); font-size: 1.375rem;">4.09x</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">CTR</span>
+                            <span class="performance-value" style="color: #2D7A4F;">1.88%</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(45,122,79,0.08); border-radius: 8px; border-left: 3px solid #2D7A4F;">
+                        <p style="font-size: 0.875rem; color: var(--text); margin: 0; line-height: 1.5;">
+                            <strong>Exceptional efficiency</strong> - Highest ROAS at 4.09x, validating voiceover format
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box" style="margin-top: 32px;">
+                <div class="insight-title">
+                    <span>🎯</span>
+                    <span>Creative Performance Insights</span>
+                </div>
+                <div class="insight-content">
+                    <p>The Ruhi 7 Layer Necklace continues to dominate with the highest engagement (3.05% CTR) and substantial spend allocation, proving its status as a hero product. The new voiceover format for NitaAmbani Necklace delivered exceptional results with 4.09x ROAS, though at lower scale, validating the creative innovation strategy. The diversity in performing creatives (original video, new shoot, and voiceover formats) demonstrates the importance of continuous creative testing and format experimentation to maintain and improve campaign performance.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Google Platform Insights -->
+        <section class="section">
+            <h3 class="section-title">Google Platform Insights</h3>
+            <p class="section-subtitle">Brand protection and search strategy</p>
+            
+            <div class="campaign-card">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                    <div class="platform-icon platform-google">G</div>
+                    <div>
+                        <h5 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin: 0;">Search Campaign Strategy</h5>
+                        <p style="font-size: 0.875rem; color: var(--text-light); margin: 4px 0 0 0;">Brand Protection Focus</p>
+                    </div>
+                </div>
+                
+                <div style="padding: 20px; background: var(--bg); border-radius: 12px; border-left: 4px solid #4285F4;">
+                    <p style="color: var(--text); line-height: 1.7; margin-bottom: 12px;">
+                        <strong>Current Approach:</strong> Running only search campaigns with brand and a few generic keywords with a conservative daily budget of ₹300.
+                    </p>
+                    <p style="color: var(--text); line-height: 1.7; margin: 0;">
+                        <strong>Strategic Objective:</strong> The primary motive is to ensure no competitor ranks at the top of "Complimento" brand search results, protecting our brand visibility and direct search traffic.
+                    </p>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 16px; background: rgba(66, 133, 244, 0.05); border-radius: 8px;">
+                    <p style="font-size: 0.9375rem; color: var(--text); margin: 0;">
+                        <strong>Note:</strong> This minimal investment serves as brand defense rather than revenue generation, which explains the zero conversion performance while maintaining strategic value.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Social Media Boosting Activity Insights -->
+        <section class="section">
+            <h3 class="section-title">Social Media Boosting Activity Insights</h3>
+            <p class="section-subtitle">Instagram engagement and brand visibility initiatives</p>
+            
+            <div class="campaign-card" style="background: linear-gradient(135deg, #FFF5F7, #FFF0F3); border: 2px solid #E1306C;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #E1306C, #F77737, #FCAF45); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                        📱
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--secondary); margin: 0;">Instagram Boosting Campaign</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-light); margin: 4px 0 0 0;">Brand visibility and engagement optimization</p>
+                    </div>
+                </div>
+                
+                <div style="color: var(--text); line-height: 1.8; margin-bottom: 24px;">
+                    <p style="margin-bottom: 16px;">
+                        We've invested approximately <strong>₹23.5k last month</strong> to promote different categories of Instagram Reels and carousels with the objective of gaining more views, enhancing brand visibility, and building trust and credibility and gain engagement.
+                    </p>
+                    
+                    <p style="margin-bottom: 16px;">
+                        The promoted videos and carousels helped the account reach <strong>29,94,069 new users</strong>, appearing across their feeds, and achieved a total views of <strong>19,77,703 in videos only</strong>.
+                    </p>
+                    
+                    <p style="margin: 0;">
+                        This campaign was strategically targeted using <strong>multiple high-jewellery-related interests</strong> to ensure visibility among the right audience segments, avoiding any irrelevant awareness reach.
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px;">
+                    <div style="text-align: center; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <div style="font-size: 0.75rem; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Investment</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #E1306C; font-family: 'Playfair Display', serif; margin-bottom: 4px;">₹23.5K</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Boosting budget</div>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <div style="font-size: 0.75rem; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">New Users Reached</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #F77737; font-family: 'Playfair Display', serif; margin-bottom: 4px;">29.9L+</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Across their feeds</div>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <div style="font-size: 0.75rem; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Video Views</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #FCAF45; font-family: 'Playfair Display', serif; margin-bottom: 4px;">19.8L+</div>
+                        <div style="font-size: 0.875rem; color: var(--text-light);">Total video views</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box" style="margin-top: 24px; background: linear-gradient(135deg, #FFF9F5, #FFFBF7); border-left-color: #E1306C;">
+                <div class="insight-title">
+                    <span>💡</span>
+                    <span>Strategic Impact</span>
+                </div>
+                <div class="insight-content">
+                    <p>The Instagram boosting investment of ₹23.5K delivered exceptional reach efficiency, exposing Complimento to nearly 30 lakh new users while generating 19.8 lakh video views. This strategic brand visibility initiative complements paid acquisition efforts by building top-of-funnel awareness, trust, and credibility within high-intent jewellery audience segments. The targeted approach using jewellery-related interests ensures quality reach, creating a halo effect that supports conversion campaigns by pre-warming audiences with brand familiarity.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Top Products by Revenue -->
+        <section class="section">
+            <h3 class="section-title">Top Products by Revenue</h3>
+            <p class="section-subtitle">Best-performing products driving January sales</p>
+            
+            <div class="campaign-card">
+                <h4 style="font-size: 1.125rem; font-weight: 700; color: var(--text-light); margin-bottom: 32px; text-transform: uppercase; letter-spacing: 1px;">Total Sales</h4>
+                
+                <!-- Product 1 -->
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h5 style="font-size: 1rem; color: var(--text); margin: 0;">Ruhi 7-Layer Gold Necklace • Complimento • None</h5>
+                        <span style="font-size: 1.125rem; font-weight: 700; color: var(--secondary);">₹3L</span>
+                    </div>
+                    <div style="width: 100%; height: 48px; background: var(--border); border-radius: 8px; overflow: hidden;">
+                        <div style="width: 42.77%; height: 100%; background: linear-gradient(90deg, #0EA5E9, #06B6D4); border-radius: 8px; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h5 style="font-size: 1rem; color: var(--text); margin: 0;">Sehr Choker Gold Brass Necklace • Complimento • None</h5>
+                        <span style="font-size: 1.125rem; font-weight: 700; color: var(--secondary);">₹53.5K</span>
+                    </div>
+                    <div style="width: 100%; height: 48px; background: var(--border); border-radius: 8px; overflow: hidden;">
+                        <div style="width: 7.63%; height: 100%; background: linear-gradient(90deg, #0EA5E9, #06B6D4); border-radius: 8px; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h5 style="font-size: 1rem; color: var(--text); margin: 0;">Ruhi Stunning Gold Chain Bracelet • Complimento • None</h5>
+                        <span style="font-size: 1.125rem; font-weight: 700; color: var(--secondary);">₹34.1K</span>
+                    </div>
+                    <div style="width: 100%; height: 48px; background: var(--border); border-radius: 8px; overflow: hidden;">
+                        <div style="width: 4.86%; height: 100%; background: linear-gradient(90deg, #0EA5E9, #06B6D4); border-radius: 8px; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h5 style="font-size: 1rem; color: var(--text); margin: 0;">Nita Ambani CZ Diamond Necklace • Complimento • Neck</h5>
+                        <span style="font-size: 1.125rem; font-weight: 700; color: var(--secondary);">₹84.3K</span>
+                    </div>
+                    <div style="width: 100%; height: 48px; background: var(--border); border-radius: 8px; overflow: hidden;">
+                        <div style="width: 12.02%; height: 100%; background: linear-gradient(90deg, #0EA5E9, #06B6D4); border-radius: 8px; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h5 style="font-size: 1rem; color: var(--text); margin: 0;">Sehr Studs – Gold and Green Stud Earrings • Complimento • None</h5>
+                        <span style="font-size: 1.125rem; font-weight: 700; color: var(--secondary);">₹15.5K</span>
+                    </div>
+                    <div style="width: 100%; height: 48px; background: var(--border); border-radius: 8px; overflow: hidden;">
+                        <div style="width: 2.21%; height: 100%; background: linear-gradient(90deg, #0EA5E9, #06B6D4); border-radius: 8px; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                
+                <!-- Others -->
+                <div style="margin-bottom: 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <h5 style="font-size: 1rem; color: var(--text); margin: 0; font-weight: 600;">Others</h5>
+                        <span style="font-size: 1.125rem; font-weight: 700; color: var(--secondary);">₹2.14L</span>
+                    </div>
+                    <div style="width: 100%; height: 48px; background: var(--border); border-radius: 8px; overflow: hidden;">
+                        <div style="width: 30.51%; height: 100%; background: linear-gradient(90deg, #94A3B8, #CBD5E1); border-radius: 8px; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box" style="margin-top: 32px;">
+                <div class="insight-title">
+                    <span>💎</span>
+                    <span>Product Performance Insights</span>
+                </div>
+                <div class="insight-content">
+                    <p><strong>Ruhi 7-Layer Gold Necklace dominates with ₹3L (42.8% of total revenue)</strong>, establishing itself as the hero product. The top 5 products contribute ₹4.87L (69.5%) of total revenue, while the remaining catalog generates ₹2.14L (30.5%). This concentration indicates strong product-market fit for key items, while suggesting opportunity to identify and promote additional bestsellers from the "Others" category to diversify revenue streams and reduce dependency on a single hero product.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Creative Performance Analysis -->
+        <section class="section">
+            <h3 class="section-title">Creative Performance Analysis</h3>
+            <p class="section-subtitle">Understanding what resonated with audiences and what needed optimization</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 32px;">
+                <!-- What Worked -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <span style="font-size: 2rem;">✅</span>
+                        <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--success); margin: 0;">What Worked</h4>
+                    </div>
+                    
+                    <div class="campaign-card" style="border-left: 4px solid var(--success); height: 100%;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 16px 0; border-bottom: 1px solid var(--border);">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--success); font-weight: 700; font-size: 1.25rem;">•</span>
+                                    <div>
+                                        <strong style="color: var(--secondary);">Add-to-Cart CTA with Anchor Pricing</strong>
+                                        <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                            Retargeting campaign featuring add-to-cart CTA with anchor pricing visuals worked exceptionally well for Sehr Choker piece, driving conversions effectively
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li style="padding: 16px 0; border-bottom: 1px solid var(--border);">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--success); font-weight: 700; font-size: 1.25rem;">•</span>
+                                    <div>
+                                        <strong style="color: var(--secondary);">Simple Bold Offer Format</strong>
+                                        <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                            Straight, simple bold offer with just the product gained good traction overall. However, none of them has achieved winner status yet
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li style="padding: 16px 0;">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--success); font-weight: 700; font-size: 1.25rem;">•</span>
+                                    <div>
+                                        <strong style="color: var(--secondary);">Voiceover Creative Innovation</strong>
+                                        <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                            The new voiceover format for Nita Ambani product picked up nicely and is starting to perform well, showing strong early performance indicators
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- What Didn't Work -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <span style="font-size: 2rem;">❌</span>
+                        <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--danger); margin: 0;">What Didn't Work</h4>
+                    </div>
+                    
+                    <div class="campaign-card" style="border-left: 4px solid var(--danger); height: 100%;">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 16px 0; border-bottom: 1px solid var(--border);">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--danger); font-weight: 700; font-size: 1.25rem;">•</span>
+                                    <div>
+                                        <strong style="color: var(--secondary);">Nita Ambani Winner Creative Decline</strong>
+                                        <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                            Past very well-performing winner creatives of Nita Ambani necklace started declining to nearly 0 results, requiring complete creative refresh
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li style="padding: 16px 0; border-bottom: 1px solid var(--border);">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--danger); font-weight: 700; font-size: 1.25rem;">•</span>
+                                    <div>
+                                        <strong style="color: var(--secondary);">Sehr Necklace Creative Fatigue</strong>
+                                        <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                            Winner creative of Sehr necklace also started to slow down, but gradually picked up after adding competitive newer creatives with various angles
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li style="padding: 16px 0;">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--danger); font-weight: 700; font-size: 1.25rem;">•</span>
+                                    <div>
+                                        <strong style="color: var(--secondary);">Sehr Choker Performance Drop</strong>
+                                        <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                            Sehr Choker necklace performing creative declined in performance, leading to higher CAC and lower ROAS, necessitating creative optimization
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box" style="margin-top: 32px;">
+                <div class="insight-title">
+                    <span>💡</span>
+                    <span>Key Takeaway: Creative Fatigue Management</span>
+                </div>
+                <div class="insight-content">
+                    <p>The analysis reveals a critical pattern: even winning creatives experience performance decay over time. Success requires continuous creative testing, diversification, and refresh cycles. The recovery of Sehr necklace through new angle variations and the promising performance of voiceover formats demonstrate that systematic creative innovation is essential for maintaining campaign performance.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- February Projections -->
+        <section class="section">
+            <h3 class="section-title">February 2026 Projected Numbers</h3>
+            <p class="section-subtitle">Forward-looking campaign projections for the upcoming month</p>
+            
+            <div style="margin-bottom: 32px;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Campaign Type</th>
+                            <th>Spends</th>
+                            <th>Orders</th>
+                            <th>Revenue</th>
+                            <th>ROAS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BAU</strong></td>
+                            <td>₹3,02,400</td>
+                            <td>134</td>
+                            <td>₹5,90,747</td>
+                            <td style="color: var(--success);"><strong>1.95x</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Testing</strong></td>
+                            <td>₹1,00,800</td>
+                            <td>23</td>
+                            <td>₹1,03,085</td>
+                            <td style="color: var(--warning);">1.02x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <div class="campaign-card" style="border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin: 0;">BAU Campaigns</h4>
+                        <span style="padding: 4px 12px; background: rgba(45, 122, 79, 0.1); color: var(--success); border-radius: 20px; font-size: 0.75rem; font-weight: 600;">STRONG</span>
+                    </div>
+                    
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Projected Spends</span>
+                            <span class="performance-value">₹3,02,400</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Expected Orders</span>
+                            <span class="performance-value">134</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Target Revenue</span>
+                            <span class="performance-value">₹5,90,747</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Projected ROAS</span>
+                            <span class="performance-value" style="color: var(--success);">1.95x</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(45, 122, 79, 0.05); border-radius: 8px;">
+                        <p style="font-size: 0.875rem; color: var(--text); margin: 0; line-height: 1.6;">
+                            <strong>Strategy:</strong> Continue scaling proven winners with optimized budget allocation and creative refresh cycles
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="campaign-card" style="border-left: 4px solid var(--warning);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin: 0;">Testing Campaigns</h4>
+                        <span style="padding: 4px 12px; background: rgba(217, 119, 6, 0.1); color: var(--warning); border-radius: 20px; font-size: 0.75rem; font-weight: 600;">CAUTIOUS</span>
+                    </div>
+                    
+                    <div class="campaign-performance">
+                        <div class="performance-row">
+                            <span class="performance-label">Projected Spends</span>
+                            <span class="performance-value">₹1,00,800</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Expected Orders</span>
+                            <span class="performance-value">23</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Target Revenue</span>
+                            <span class="performance-value">₹1,03,085</span>
+                        </div>
+                        <div class="performance-row">
+                            <span class="performance-label">Projected ROAS</span>
+                            <span class="performance-value" style="color: var(--warning);">1.02x</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 16px; padding: 12px; background: rgba(217, 119, 6, 0.05); border-radius: 8px;">
+                        <p style="font-size: 0.875rem; color: var(--text); margin: 0; line-height: 1.6;">
+                            <strong>Strategy:</strong> Maintain controlled testing budget with strict performance thresholds and quick pivot strategy
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-box" style="margin-top: 32px;">
+                <div class="insight-title">
+                    <span>📊</span>
+                    <span>February Outlook</span>
+                </div>
+                <div class="insight-content">
+                    <p>February projections reflect a strategic approach: BAU campaigns maintain strong performance at 1.95x ROAS, indicating confidence in proven winners. Testing campaigns remain at minimal profitability (1.02x ROAS), suggesting a conservative testing approach while seeking breakthrough products. The budget allocation (75% BAU, 25% Testing) balances growth with innovation, prioritizing reliable revenue generation while maintaining strategic exploration.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Strategic Notes for February -->
+        <section class="section">
+            <h3 class="section-title">Strategic Notes for February</h3>
+            <p class="section-subtitle">Key focus areas and action items for sustained growth</p>
+            
+            <div class="campaign-card" style="background: linear-gradient(135deg, #FEF7E6, #FDF5E0); border: 2px solid var(--primary);">
+                <ul class="action-list" style="list-style: none; padding: 0; margin: 0;">
+                    <li style="padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;">
+                        <span style="font-size: 1.5rem; line-height: 1;">🎨</span>
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 1rem;">Unusual Content Strategy</strong>
+                            <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                Focus more on unusual content strategy which will create a remembrance value in customer's mind, building distinctive brand recall
+                            </p>
+                        </div>
+                    </li>
+                    
+                    <li style="padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;">
+                        <span style="font-size: 1.5rem; line-height: 1;">🔄</span>
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 1rem;">Develop Repeat Buyers</strong>
+                            <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                Implement strategies to develop more repeat buyers and increase customer lifetime value through retention campaigns
+                            </p>
+                        </div>
+                    </li>
+                    
+                    <li style="padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;">
+                        <span style="font-size: 1.5rem; line-height: 1;">📱</span>
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 1rem;">Engage 360 Marketing Messages</strong>
+                            <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                Keep continuing pushing marketing messages through Engage 360 on festive or special occasions with different angled messaging and products
+                            </p>
+                        </div>
+                    </li>
+                    
+                    <li style="padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;">
+                        <span style="font-size: 1.5rem; line-height: 1;">🛒</span>
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 1rem;">Abandoned Cart Recovery</strong>
+                            <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                Start checking out abandoned carts manually if possible to recover lost revenue and understand customer hesitation points
+                            </p>
+                        </div>
+                    </li>
+                    
+                    <li style="padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start;">
+                        <span style="font-size: 1.5rem; line-height: 1;">📸</span>
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 1rem;">Founder Content Presence</strong>
+                            <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                Founders to be more camera and content friendly now, building personal brand connection with customers
+                            </p>
+                        </div>
+                    </li>
+                    
+                    <li style="padding: 16px 0; display: flex; gap: 16px; align-items: flex-start;">
+                        <span style="font-size: 1.5rem; line-height: 1;">⭐</span>
+                        <div>
+                            <strong style="color: var(--secondary); font-size: 1rem;">User-Generated Content Production</strong>
+                            <p style="color: var(--text); margin: 8px 0 0 0; line-height: 1.6;">
+                                Higher number of UGCs to be produced, leveraging customer testimonials and real-world product showcases for authenticity
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 32px;">
+                <div class="highlight-card" style="background: white;">
+                    <div style="font-size: 2rem; margin-bottom: 12px;">🎯</div>
+                    <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Content Innovation</div>
+                    <div style="color: var(--text-light); font-size: 0.9375rem;">Focus on memorable, unusual content that builds brand distinctiveness</div>
+                </div>
+                
+                <div class="highlight-card" style="background: white;">
+                    <div style="font-size: 2rem; margin-bottom: 12px;">💎</div>
+                    <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Customer Retention</div>
+                    <div style="color: var(--text-light); font-size: 0.9375rem;">Build repeat buyer base through strategic engagement and recovery</div>
+                </div>
+                
+                <div class="highlight-card" style="background: white;">
+                    <div style="font-size: 2rem; margin-bottom: 12px;">✨</div>
+                    <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Authentic Storytelling</div>
+                    <div style="color: var(--text-light); font-size: 0.9375rem;">Leverage founder presence and UGC for genuine brand connection</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Reference Materials -->
+        <section class="section">
+            <h3 class="section-title">Reference Materials</h3>
+            <p class="section-subtitle">Additional resources and strategic documentation</p>
+            
+            <div class="campaign-card" style="border-left: 4px solid var(--primary); background: linear-gradient(135deg, rgba(212,175,55,0.05), rgba(201,169,97,0.05));">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                    <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                        📊
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin: 0;">ROAS Breakthrough Strategy Deck</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-light); margin: 4px 0 0 0;">Comprehensive analysis on breaking the 2x ROAS barrier</p>
+                    </div>
+                </div>
+                
+                <p style="color: var(--text); line-height: 1.7; margin-bottom: 16px;">
+                    We have shared a deck highlighting breaking the barrier of around 2x ROAS. The link is also attached below for reference:
+                </p>
+                
+                <a href="https://docs.google.com/presentation/d/1A8A3a57hEewO3fxn_TKZZNzNyYbma1IKNp4DDciz5Yk/edit?slide=id.p#slide=id.p" 
+                   target="_blank"
+                   style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; font-size: 0.9375rem;">
+                    <span>📎</span>
+                    <span>View ROAS Strategy Deck</span>
+                    <span style="font-size: 0.75rem;">↗</span>
+                </a>
+                
+                <div style="margin-top: 16px; padding: 12px; background: rgba(212,175,55,0.1); border-radius: 8px;">
+                    <p style="font-size: 0.875rem; color: var(--text); margin: 0; line-height: 1.6;">
+                        <strong>Note:</strong> This presentation includes detailed strategies, audience insights, and optimization techniques to achieve and sustain 2x+ ROAS performance.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-brand">COMPLIMENTO</div>
+            <p class="footer-text">January 2026 Performance Marketing Report</p>
+            <p class="footer-text">Prepared by: Sandeep Sahoo</p>
+            <p class="footer-text">Next Review: March 1, 2026</p>
+            <p class="footer-text" style="margin-top: 16px; font-size: 0.8125rem;">
+                This report is confidential and intended for internal use only.
+            </p>
+            <p class="footer-text" style="font-size: 0.8125rem;">
+                © 2026 Complimento. All data and insights are proprietary and confidential.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
+
